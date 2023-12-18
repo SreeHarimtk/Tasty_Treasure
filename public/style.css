@@ -320,8 +320,15 @@ body,
 .viewcards{
   display: flex ;
   justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 12px ;
+  flex-wrap: wrap !important;
+  
+  @media(max-width: 768px){
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
   
 }
 
@@ -344,4 +351,10 @@ border: 0 solid white;
 .imght{
   max-width: 100%;
   max-height: 50vh;
+}
+
+
+.imagesize{
+
+  max-height:100px;
 }

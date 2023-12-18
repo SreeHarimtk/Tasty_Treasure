@@ -390,13 +390,22 @@ const userLogout = async (req,res)=>{
 
 
 const productDetails = async (req,res)=>{
+
     try{
         if(req.session.user_id){
             const id = req.params.id
-            console.log('paramsid',id)
-            const productData = await products.findById(id)
-            console.log('p',productData)
-            res.render('productDetails',{products:productData})
+           
+                console.log('paramsid',id)
+                const productData = await products.findById(id)
+                console.log('p',productData)
+                if(productData){
+                    res.render('productDetails',{products:productData})
+                }
+              
+            else {
+                res.render('404')
+            }
+          
         }else{
            
         }

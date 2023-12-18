@@ -138,11 +138,11 @@
             <input type="file" id="form3Example7" onchange="viewImages(event)" class="form-control custominput" name="image" multiple />
 
 <!-- Container to display image previews -->
-<div class="container-fluid">
-  <div class="row" id="imagePreviewContainer">
+<div class="container-fluid ">
+  <div class="row " id="imagePreviewContainer">
     <!-- Existing image previews (if any) -->
     <% product.image.forEach(image => { %>
-      <div class="col-md-3 mb-2" style="height: 200px; overflow: hidden;">
+      <div class="col-md-3 mb-2 imagesize" style="height: 200px; overflow: hidden;">
         <img src="/uploads/<%= image %>" alt="Image Preview" class="img-fluid" />
       </div>
     <% }) %>
