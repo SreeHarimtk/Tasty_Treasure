@@ -1,0 +1,283 @@
+
+
+ 
+<%- include('header') -%>
+
+<div class="full bg-image" style="background-image: url(https://png.pngtree.com/background/20210710/original/pngtree-fast-food-light-yellow-hamburger-coke-chips-hot-coffee-tomato-sauce-picture-image_981064.jpg); background-size: cover; background-repeat: no-repeat; overflow-y: auto;">
+  <!--navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light container-fluid border-bottom border-warning border-2  shadow position-fixed fixed-top" style="background-color:#FFF0D4;">
+    <div class="container fluid">
+      <img src="" />
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active navbar-text text-black" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-text text-black" href="#">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-text text-black" href="#">Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-text text-black" href="/adminlogout">Log Out</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle navbar-text text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contact</a>
+            <ul class="dropdown-menu navbar-text text-black" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Mobile</a></li>
+              <li><a class="dropdown-item" href="#">965847123</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Email</a></li>
+              <li><a class="dropdown-item" href="#">tastytreasure@gmail.com</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <form class="d-flex">
+          <input class="form-control me-2 outline-warnin" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-outline-warning" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!--navbar-->
+
+
+
+  
+  <!-- Sidebar -->
+     
+      
+  <div class="sidebar ">
+    <h2><i class="fa fa-user-circle border-bottom border-black"></i> ADMIN</h2>
+
+    
+      <a href="/adminhome"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="/addproducts"><i class="fa fa-fw fa-shopping-cart"></i> Add products</a>
+      <a href="/adminUserDetails"><i class="fa fa-fw fa-user"></i> Users</a>
+      <a href="/viewproducts"><i class="fa fa-fw fa-shopping-cart"></i> Products</a>
+      <a href="#contact"><i class="fa fa-fw fa-exchange"></i> Transactions</a>
+      <a href="#contact"><i class="fa fa-fw fa-tag"></i> Coupons</a>
+      <a href="#contact"><i class="fa fa-fw fa-bar-chart"></i> Reports</a>
+      <a href="#contact" onclick="showCouponInput()"><i class="fa fa-fw fa-ticket "></i>Add Coupon</a>
+  </div>
+
+
+
+
+
+
+
+  
+  <!-- Jumbotron -->
+  <div class="container py-4 fonts  ">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right addproductsadmin"
+       
+            >
+          <div class="card-body p-5 shadow-5 text-center ">
+            <h2 class="fw-bold mb-5">Add Food Items</h2>
+            <form action="/uploadproducts" method="post"  enctype="multipart/form-data">
+      
+
+              
+            <div class="row mb-4">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="form3Example3">Name</label>
+                  <input type="text" id="form3Example3" class="form-control custominput" name="name" value="" required />
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-outline">
+                  <label class="form-label" for="form3Example4">Description</label>
+                  <input type="text" id="form3Example4" class="form-control custominput" name="description"  value="" required />
+                 
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-4">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+            <select id="categoryDropdown" class="form-select custominput" name="category" required>
+           
+                <option value="Veg">"veg"</option>
+                <option value="Non-Veg">"Non-Veg"</option>
+          
+             </select>
+     
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-outline">
+                  <label class="form-label" for="form3Example5">Sub-Category</label>
+                  <input type="text" id="form3Example5" class="form-control custominput" name="subcat" value="" required/>
+                 
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row mb-4">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="form3Example6">Price</label>
+                  <input type="number" id="form3Example6" class="form-control custominput" name="price" value="" required/>
+                 
+
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-outline">
+                  <label class="form-label" for="form3Example7">Add Image</label>
+                  <input type="file" onchange="addFileInput(event)" class="form-control custominput" name="image" multiple/>
+                
+                 
+                 
+                </div>
+              
+              </div>
+              <div class="container-fluid">
+                <div class="row" id="imagePreviewContainer">
+                  
+                </div>
+              </div>
+            </div>
+
+            <h5 class="text-success fonts"><%- message %></h5>
+            <input type="hidden" id="croppedImageData" name="croppedImageData" />
+              <!-- Submit button -->
+              <button  onclick="confirm('Are you sure you want to add this product ?')" type="submit" class="btn btn-outline-dark " id="submitBtn" >
+                Submit
+              </button>
+            
+            
+
+             
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+   
+    </div>
+  </div>
+  <!-- Jumbotron -->
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<script>
+function addFileInput(event) {
+  const fileInput = event.target;
+  const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+
+  const files = fileInput.files;
+
+  for (let i = 0; i < files.length; i++) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.style.width = '100px';
+      img.style.height = '100px';
+      img.style.marginRight = '10px';
+      img.style.marginTop = '10px';
+
+      imagePreviewContainer.appendChild(img);
+    };
+
+    reader.readAsDataURL(files[i]);
+  }
+}
+
+
+
+
+
+
+
+
+function showCouponInput() {
+  Swal.fire({
+    title: 'Add Coupon',
+    input: 'text',
+    inputLabel: 'Enter Coupon Code',
+    showCancelButton: true,
+    confirmButtonText: 'Add',
+    cancelButtonText: 'Cancel',
+    preConfirm: (categoryName) => {
+      
+      return fetch('/savecoupon', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code: couponCode, date: expiryDate }),
+      })
+      console.log('category response',response)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to save category');
+        }
+        return response.json();
+      })
+      .then(data => {
+       
+        console.log('Server Response:', data);
+        return categoryName; 
+      })
+      .catch(error => {
+        console.error('Error:', error.message);
+        Swal.showValidationMessage('Failed to save category');
+      });
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const categoryName = result.value;
+      console.log('Category Added:', categoryName);
+    }
+  });
+}
+
+
+
+</script>
+
+<%- include('footer') -%>
+
+
+
+
+
+
+
+
+
+
+
+
+  

@@ -1,0 +1,218 @@
+<%- include('header') -%>
+
+
+
+
+
+
+
+<style>
+  .mask-custom {
+    backdrop-filter: contrast(140%) brightness(100%) saturate(100%) sepia(50%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+    mix-blend-mode: lighten;
+    background: rgba(161, 44, 199, 0.31);
+    opacity: 1;
+  }
+</style>
+
+<!-- Background image -->
+<div
+  class="bg-image pt-3 "
+  style="
+    background-image: url('https://www.eatthis.com/wp-content/uploads/sites/4/2020/10/fast-food.jpg?quality=82&strip=1');
+    height: 100vh; background-size:cover ;background-position: center;
+  "
+>
+  <div class="mask mask-custom"></div>
+
+<!-- Background image -->
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light  container">
+  <div class="container fluid ">
+    <img src="">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active navbar-text text-white" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-text text-white" href="#">Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-text text-white" href="#">Reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-text text-white" href="/adminlogin">Admin</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle navbar-text text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </a>
+          <ul class="dropdown-menu navbar-text text-white" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Mobile</a></li>
+            <li><a class="dropdown-item" href="#">965847123</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Email</a></li>
+            <li><a class="dropdown-item" href="#">tastytreasure@gmail.com</a></li>
+          </ul>
+       
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-sucess" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<div class="image">
+  <img src="../public/assets/DIAMOND HEART (1).png" >
+</div>
+
+
+
+
+
+
+
+
+
+
+    <!--signup page-->
+  
+  <!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+  <style>
+    .cascading-right {
+      margin-right: -50px;
+    }
+
+    @media (max-width: 991.98px) {
+      .cascading-right {
+        margin-right: 0;
+      }
+    }
+  </style>
+
+  <!-- Jumbotron -->
+  <div class="container py-3 fonts">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+          <div class="card-body p-5 shadow-5 text-center signupdiv">
+            <h2 class="fw-bold mb-5">Sign up now</h2>
+            <form method="post" action="/usersignup">
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="form3Example1">First name</label>
+                    <input type="text" id="form3Example1" class="form-control" name="first_name" />
+                  
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="form3Example2">Last name</label>
+                    <input type="text" id="form3Example2" class="form-control" name="second_name" />
+    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="form3Example3">Email address</label>
+                    <input type="email" id="form3Example3" class="form-control" name="email" />
+                   
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="form3Example3">Mobile Number</label>
+                    <input type="number" id="form3Example3" class="form-control" name="mobile" />
+                 
+                  </div>
+                </div>
+              </div>
+
+          
+
+              <!-- Password input -->
+              <div class="form-outline mb-3 ">
+                <label class="form-label" for="form3Example4">Password</label>
+                <input type="password" id="form3Example4" class="form-control" name="password" />
+                <label class="form-label" for="form3Example4">Confirm Password</label>
+                <input type="password" id="form3Example4" class="form-control" name="confirmpassword" />
+                  
+              </div>
+
+
+              
+            
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-4"  >Sign up </button>
+                <h5 class="text-danger fonts"><%- message %></h5>
+          
+              
+              
+       
+
+          
+               
+
+             
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+   
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->
+
+
+
+
+
+
+
+
+
+  <!-- <div class="container content text-white userbg">
+    
+      <div class="row">
+          <div class="col-12 col-md-6 text-left">
+            
+              <h1 class="mb-3">Fastest Food Delivery</h1>
+              <h5 class="mb-4">"Delicious Moments, Delivered to Your Doorstep"</h5>
+              <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button"
+                  rel="nofollow" target="_blank">SIGN UP</a>
+              <a class="btn btn-outline-light btn-lg m-2" href="httpsmdbootstrap.com/docs/standard/" target="_blank"
+                  role="button">LOG IN</a>
+          </div>
+      </div>
+  </div>
+</div>
+
+ -->
+
+
+
+  <%- include('footer') -%>

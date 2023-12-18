@@ -1,0 +1,76 @@
+<%- include('header') -%>
+
+
+
+<%- include('navbar') -%>
+
+<div class="full bg-image"
+  style="background-image: url(https://png.pngtree.com/background/20210710/original/pngtree-fast-food-light-yellow-hamburger-coke-chips-hot-coffee-tomato-sauce-picture-image_981064.jpg); background-size: cover; background-repeat: no-repeat; overflow-y: auto;">
+
+
+
+  <div class="sidebar">
+    <h2><i class="fa fa-user-circle border-bottom border-black"></i> <%= userData.first_name %></h2>
+
+    <a href="/adminhome"><i class="fa fa-fw fa-home"></i> Home</a>
+    <a href="/addproducts"><i class="fa fa-fw fa-shopping-cart"></i>Wish List</a>
+    <a href="/viewproducts"><i class="fa fa-fw fa-shopping-cart"></i>Orders</a>
+    <a href="#contact"><i class="fa fa-fw fa-exchange"></i> Transactions</a>
+    <a href="/addadress"><i class="fa fa-fw fa-tag"></i> Adress</a>
+    <a href=""><i class="fa fa-fw fa-bar-chart"></i>Password</a>
+
+  </div>
+
+
+
+
+
+  <div class="container col-md-7 mt-3">
+    <div class="row pl-2 mt-5">
+        <h3 class="fonts mt-5 border-bottom-1">Your wallet balance: ₹<%= userData.wallet.balance %></h3>
+
+        <!-- Display transaction history -->
+       
+        <style>
+          .table-bordered-muted {
+            border: 1px solid #313437; /* Replace with your desired dark color */
+          }
+        
+          .table-bordered-muted th,
+          .table-bordered-muted td {
+            border: 1px solid #343a40; /* Replace with your desired dark color */
+          }
+          
+        </style>
+        
+        <div class="container mt-5">
+          <div class="row">
+            <table class="table table-bordered-muted fonts">
+              <thead >
+                <tr >
+                  <th >Type</th>
+                  <th >Amount</th>
+                  <th  >Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% userData.wallet.transaction.forEach(transaction => { %>
+                <% const formattedDateTime = new Date(transaction.time).toLocaleString('en-GB'); %>
+                <tr>
+                  <td><%= transaction.type %></td>
+                  <td>₹<%= transaction.amount %></td>
+                  <td><%= formattedDateTime %></td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+
+
+
+
+
+
+<%- include('footer') -%>

@@ -1,0 +1,89 @@
+<%- include('header') -%>
+
+<%- include('navbar') -%>
+
+<div class="full bg-image"
+  style="background-image: url(https://png.pngtree.com/background/20210710/original/pngtree-fast-food-light-yellow-hamburger-coke-chips-hot-coffee-tomato-sauce-picture-image_981064.jpg); background-size: cover; background-repeat: no-repeat; overflow-y: auto;">
+
+
+
+  <div class="sidebar">
+    <h2><i class="fa fa-user-circle border-bottom border-black"></i> <%= userData.first_name %></h2>
+
+    <a href="/adminhome"><i class="fa fa-fw fa-home"></i> Home</a>
+    <a href="/addproducts"><i class="fa fa-fw fa-shopping-cart"></i>Wish List</a>
+    <a href="/viewproducts"><i class="fa fa-fw fa-shopping-cart"></i>Orders</a>
+    <a href="#contact"><i class="fa fa-fw fa-exchange"></i> Transactions</a>
+    <a href="/addadress"><i class="fa fa-fw fa-tag"></i> Adress</a>
+    <a href=""><i class="fa fa-fw fa-bar-chart"></i>Password</a>
+
+  </div>
+
+
+
+
+
+  <!-- Table -->
+
+  <div class="container mt-5">
+    <div class="row justify-content-center py-5">
+        <div class="col-md-8">
+            <table class="table align-middle mb-0  fonts" style="background-color: #FFF0D4;">
+                <thead class="" style="background-color: #FFF0D4;">
+                    <tr>
+                        <th>Product</th>
+                        <th>Ordered Date</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                       
+                      
+                       
+                    </tr>
+                </thead>
+                <tbody>  
+                    <% orderDetail.product.forEach(quantity => { %>
+                  <% productDetails.forEach(product => { %>
+                    
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="../uploads/<%= product.image[0] %>" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                                <div class="ms-3">
+                                    <p class="fw-bold mb-1"><%= product.name %></p>
+                                    <p class="text-muted mb-0"><%= product.category %></p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="fw-bold mb-1"><%= orderDetail.createdAt.toLocaleDateString() %></p>
+                        </td>
+                        <td>
+                            <span class="fw-bold mb-1"><%= quantity.priceAtPurchase %></span>
+                        </td>
+                        <td>
+                      
+                          <span class="fw-bold mb-1"> <%= quantity.quantity %></span>
+                          
+                    
+                      </td>
+                      <!-- <td>
+                        <a href="/addReviewproduct?id=<%= product._id %>">
+                        <button type="button" class="btn btn-outline-primary toggleBlock btn-outline-dark" >Add Review</button>
+                    </a>
+                    </td> -->
+
+                      <% }); %>
+                         <!-- <% }); %> -->
+                    </tr>
+                  
+                    <!-- Add more rows if needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+<%- include('footer') -%>

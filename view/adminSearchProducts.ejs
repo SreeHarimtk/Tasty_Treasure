@@ -1,0 +1,159 @@
+<%- include('header') -%>
+
+<div class="full bg-image " style="background-image: url(https://png.pngtree.com/background/20210710/original/pngtree-fast-food-light-yellow-hamburger-coke-chips-hot-coffee-tomato-sauce-picture-image_981064.jpg); background-size: cover; background-repeat: no-repeat; overflow-y: auto;">
+  <!--navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light  container-fluid border-bottom border-warning border-2   position-fixed fixed-top " style="background-color:#FFF0D4;">
+    <div class="container fluid ">
+      <img src="" />
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link  navbar-text text-dark " aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-text text-dark " href="#">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-text text-dark " href="#">Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-text text-dark " href="/adminlogout">Log Out</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle navbar-text text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contact</a>
+            <ul class="dropdown-menu navbar-text text-black" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Mobile</a></li>
+              <li><a class="dropdown-item" href="#">965847123</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Email</a></li>
+              <li><a class="dropdown-item" href="#">tastytreasure@gmail.com</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <form class="d-flex" action="/searchproducts" method="GET">
+            <input class="form-control me-2 outline-warnin" type="search" name="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-warning" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!--navbar-->
+
+      
+  <div class="sidebar ">
+    <h2><i class="fa fa-user-circle border-bottom border-black"></i> ADMIN</h2>
+  
+    
+      <a href="/adminhome"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="/addproducts"><i class="fa fa-fw fa-shopping-cart"></i> Add products</a>
+      <a href="/adminUserDetails"><i class="fa fa-fw fa-user"></i> Users</a>
+      <a href="/adminvieworder"><i class="fa fa-fw fa-user"></i> Orders</a>
+      <a href="/viewproducts"><i class="fa fa-fw fa-shopping-cart"></i> Products</a>
+      <a href="#contact"><i class="fa fa-fw fa-exchange"></i> Transactions</a>
+      <a href="#contact"><i class="fa fa-fw fa-tag"></i> Coupons</a>
+      <a href="#contact"><i class="fa fa-fw fa-bar-chart"></i> Reports</a>
+  </div>
+  <!-- sidebar -->
+
+  <!-- centreform -->
+  <div class="text-center center-div container py-2 usercentrediv  ">
+    <section class="intro">
+      <div class="bg-image h-100">
+        <div class="mask d-flex align-items-center h-100">
+          <div class="container-fluid container-sm">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <div class="card mask-custom">
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-white mb-0">
+                        <thead
+                          style="
+                            color: black;
+                            font-size: x-large;
+                            border-bottom: 1px solid black;
+                          "
+                        >
+                          <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col" class="d-none d-sm-table-cell">Category</th>
+                            <th scope="col" class="d-none d-sm-table-cell">SubCategory</th>
+                            <th scope="col" class="d-none d-sm-table-cell">Price</th>
+                            <th scope="col">Image</th>
+                            <th scope="col" class="d-none d-sm-table-cell">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody
+                          style="
+                            color: black;
+                            font-weight: normal;
+                            font-size: larger;
+                          "
+                        >
+                          <br />
+                          <tr class="fonts">
+                            <% products.forEach(function(item) { %>
+                              <th class="fonts" scope="row"><%= item.name %></th>
+                              <td class="fonts d-none d-sm-table-cell d-md-table-cell"><%= item.category %></td>
+                              <td class="fonts d-none d-sm-table-cell d-md-table-cell"><%= item.subcat %></td>
+                              <td class="fonts d-none d-sm-table-cell d-md-table-cell">₹<%= item.price %>/-</td>
+                              <td class="fonts">
+                                <img src="./uploads/<%= item.image[0] %>" style="width: 100px; height: 80px" />
+                              </td>
+                              <td class="fonts d-none d-sm-table-cell d-md-table-cell">
+                                <a href="/editproducts?id=<%= item._id %>" class="btn-border-shadow-update" style="text-decoration: none">
+                                  <span>
+                                    <i class="fa fa-edit" style="color: black; margin-right: 10px"></i>
+                                  </span>
+                                </a>
+                                <a href="/deleteproducts?id=<%= item._id %>" class="btn-border-shadow-update " style="text-decoration: none" onclick="return confirm('Are you sure you want to delete this product?');">
+                                  <span>
+                                    <i class="fa fa-trash" style="color: black; margin-right: 10px"></i>
+                                  </span>
+                              </a>
+                           
+                            </td>
+                          </tr>
+                          <% }); %>
+                          
+                          
+                          
+                          <br>
+
+                     
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- centreform -->
+</div>
+
+
+
+
+
+
+
+
+<%- include('footer') -%>
+
+
+
+
+
+
+
+

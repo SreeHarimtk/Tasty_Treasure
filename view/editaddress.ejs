@@ -1,0 +1,196 @@
+ 
+  
+  <%- include('header') -%>
+ 
+ 
+  <%- include('navbar') -%>
+ 
+ 
+ 
+ <div class="full bg-image" style="background-image: url(https://png.pngtree.com/background/20210710/original/pngtree-fast-food-light-yellow-hamburger-coke-chips-hot-coffee-tomato-sauce-picture-image_981064.jpg); background-size: cover; background-repeat: no-repeat; overflow-y: auto;">
+ 
+ 
+ 
+     <!-- Sidebar -->
+      
+       
+     <div class="sidebar ">
+         <h2><i class="fa fa-user-circle border-bottom border-black"></i>USER</h2>
+       
+         
+           <a href="/userhome"><i class="fa fa-fw fa-home"></i> Home</a>
+           <a href="/addproducts"><i class="fa fa-fw fa-shopping-cart"></i>Wish List</a>
+           
+           <a href="/viewproducts"><i class="fa fa-fw fa-shopping-cart"></i>Orders</a>
+           <a href="#contact"><i class="fa fa-fw fa-exchange"></i> Transactions</a>
+           <a href="/addadress"><i class="fa fa-fw fa-tag"></i> Adress</a>
+           <a href=""><i class="fa fa-fw fa-bar-chart"></i>Password</a>
+       </div>
+   
+      
+   
+             
+    
+ 
+ 
+ 
+            <!-- adress form -->
+ 
+ 
+            <div class="container py-5 mx-5 fonts " style="overflow: hidden; padding-left: 20vw; ">
+             <div class="col-xl-6">
+                 <div class="card-body p-md-5 text-black " style="max-height: 87vh; overflow-y: hidden;  padding: 20px;box-shadow: 5px 5px 5px rgba(0.2, 0.2, 0.2, 0.2);">
+                     <h3 class="mb-4 text-uppercase">Add Delivery Adress</h3>
+         <form action="/editaddress" method="post">
+             
+                
+                    <input type="hidden" name="id" value="<%= userAddress._id %>">
+
+           
+            
+             
+                     <div class="row">
+                         <div class="col-md-6 mb-4">
+                             <div class="form-outline">
+                                <label class="form-label" for="form3Example1m">Full name</label>
+                                 <input type="text" id="form3Example1m" class="form-control custominput" value="<%=  userAddress.fullname %>" name="fullname"required />
+                                 
+                             </div>
+                         </div>
+                         <div class="col-md-6 mb-4">
+                             <div class="form-outline">
+                                <label class="form-label" for="form3Example1n">Type</label>
+                                 <input type="text" id="form3Example1n" class="form-control custominput" value="<%= userAddress.type %>" name="type" required/>
+                                
+                             </div>
+                         </div>
+                     </div>
+
+
+                     <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <label class="form-label" for="form3Example1m">mobilenumber</label>
+                                <input type="number" id="form3Example1m" class="form-control custominput" value="<%= userAddress.contactnumber %>" name="mobilenumber"required />
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <label class="form-label" for="form3Example1n">Secondary Number</label>
+                                <input type="number" id="form3Example1n" class="form-control custominput" value="<%= userAddress.secondarynumber %>" name="secondarynumber" required/>
+                               
+                            </div>
+                        </div>
+                    </div>
+ 
+ 
+ 
+                     <div class="row">
+                         <div class="col-md-6 mb-4">
+                             <div class="form-outline">
+                                <label class="form-label" for="form3Example1m">Appartment name</label>
+                                 <input type="text" id="form3Example1m" class="form-control custominput" value="<%= userAddress.appartmentname %>" name="appartmentname"required />
+                                 
+                             </div>
+                         </div>
+                         <div class="col-md-6 mb-4">
+                             <div class="form-outline">
+                                <label class="form-label" for="form3Example1n">District</label>
+                                 <input type="text" id="form3Example1n" class="form-control custominput" value="<%= userAddress.district %>" name="district"required  />
+                               
+                             </div>
+                         </div>
+                     </div>
+ 
+ 
+ 
+                     <div class="row">
+                         <div class="col-md-6 mb-4">
+                             <div class="form-outline">
+                                <label class="form-label" for="form3Example1m">Street</label>
+                                 <input type="text" id="form3Example1m" class="form-control custominput" value="<%= userAddress.street %>" name="street"required />
+                                
+                             </div>
+                         </div>
+                         <div class="col-md-6 mb-4">
+                             <div class="form-outline">
+                                <label class="form-label" for="form3Example1n">Pincode</label>
+                                 <input type="text" id="form3Example1n" class="form-control custominput" value="<%= userAddress.pincode %>" name="pincode"required />
+                                
+                             </div>
+                         </div>
+                     </div>
+ 
+ 
+                     
+                     <div class="row">
+                         <div class="col-md-6 mb-4">
+                             <div class="form-outline">
+                                <label class="form-label" for="form3Example1m">State</label>
+                                 <input type="text" id="form3Example1m" class="form-control custominput" value="<%= userAddress.state %>" name="state"required />
+                                 
+                             </div>
+                         </div>
+                         <div class="col-md-6 mb-4">
+                             <div class="form-outline">
+                                <label class="form-label" for="form3Example1n">Landmark</label>
+                                 <input type="text" id="form3Example1n" class="form-control custominput" value="<%= userAddress.landmark %>" name="landmark" required/>
+                                
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-md-12 text-center">
+                         <button class="btn btn-border border-dark">Submit</button>
+                     </div>
+                     
+
+                 </form>
+         </div>
+         
+ 
+ 
+      
+ 
+ 
+ 
+ 
+ 
+ <style>
+ 
+    
+ 
+         .title-style{
+             font-family: Georgia, 'Times New Roman', Times, serif;
+             font-weight: 700;
+             font-size: 20px;
+             color: hsl(52, 0%, 98%);
+             }
+             .title-quote{
+             font-family: Georgia, 'Times New Roman', Times, serif;
+             font-weight: 400;
+             color: hsl(52, 0%, 98%);
+             }
+ 
+ 
+ 
+ </style>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <script>
+     document.getElementById('mandatory').addEventListener('click', function() {
+       const selectedOption = document.querySelector('.dropdown-item.active');
+       if (!selectedOption) {
+         alert('Please select a Type of Work');
+       }
+     });
+   </script>
+ 
+   
+  <%- include('footer') -%>

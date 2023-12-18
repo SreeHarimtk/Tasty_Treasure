@@ -1,0 +1,299 @@
+<%- include('header') -%>
+
+
+<div class="full bg-image" style="background-image: url(https://png.pngtree.com/background/20210710/original/pngtree-fast-food-light-yellow-hamburger-coke-chips-hot-coffee-tomato-sauce-picture-image_981064.jpg); background-size: cover; background-repeat: no-repeat; overflow-y: auto;">
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light container-fluid border-bottom border-warning border-2  shadow position-fixed fixed-top"style="background-color:#FFF0D4;">
+      <div class="container fluid">
+        <img src="" />
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active navbar-text text-black" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link navbar-text text-black" href="#">Blogs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link navbar-text text-black" href="#">Reviews</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link navbar-text text-black" href="/adminlogout">Log Out</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle navbar-text text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contact</a>
+              <ul class="dropdown-menu navbar-text text-black" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Mobile</a></li>
+                <li><a class="dropdown-item" href="#">965847123</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Email</a></li>
+                <li><a class="dropdown-item" href="#">tastytreasure@gmail.com</a></li>
+              </ul>
+            </li>
+          </ul>
+  
+          <form class="d-flex">
+            <input class="form-control me-2 outline-warnin" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-warning" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!--navbar-->
+
+
+
+
+    <div class="sidebar ">
+        <h2><i class="fa fa-user-circle border-bottom border-black"></i> ADMIN</h2>
+      
+        
+          <a href="/adminhome"><i class="fa fa-fw fa-home"></i> Home</a>
+          <a href="/addproducts"><i class="fa fa-fw fa-shopping-cart"></i> Add products</a>
+          <a href="/adminUserDetails"><i class="fa fa-fw fa-user"></i> Users</a>
+          <a href="/adminvieworder"><i class="fa fa-fw fa-user"></i> Orders</a>
+          <a href="/viewproducts"><i class="fa fa-fw fa-shopping-cart"></i> Products</a>
+          <a href="#contact"><i class="fa fa-fw fa-exchange"></i> Transactions</a>
+          <a href="#contact"><i class="fa fa-fw fa-tag"></i> Coupons</a>
+          <a href="/reports"><i class="fa fa-fw fa-bar-chart"></i> Reports</a>
+          <a href="#contact" onclick="showCategoryInput()"><i class="fa fa-fw fa-folder"></i>Add Category</a>
+          
+         
+      </div>
+
+
+    
+
+
+      <div class="container">
+        <div class="row" style="position: fixed; top: 15%; left: 30%;">
+          <div class="col">
+            <button class="btn btn-sm btn-outline-warning text-dark fonts" id="downloadPdfBtn">Download PDF</button>
+          </div>
+          
+          <div class="col">
+            <button class="btn btn-sm btn-outline-warning text-dark fonts" id="dailyBtn">Daily</button>
+          </div>
+          
+          <div class="col">
+            <button class="btn btn-sm btn-outline-warning text-dark fonts" id="weeklyBtn">Weekly</button>
+          </div>
+          
+          <div class="col">
+            <button class="btn btn-sm btn-outline-warning text-dark fonts" id="monthlyBtn">Monthly</button>
+          </div>
+          
+          <div class="col">
+            <button class="btn btn-sm btn-outline-warning text-dark fonts" id="yearlyBtn">Yearly</button>
+          </div>
+      
+          <div class="col">
+            <label for="startDate" class="text-dark fonts bg-warning rounded-pill">Start Date:</label>
+            <input type="date" class="form-control" id="startDate">
+          </div>
+      
+          <div class="col">
+            <label for="endDate" class="text-dark fonts bg-warning rounded-pill">End Date:</label>
+            <input type="date" class="form-control" id="endDate">
+          </div>
+        </div>
+      </div>
+      
+      
+
+
+
+
+
+      
+
+  <div class="text-center center-div container py-2 usercentrediv "  style="position: fixed; top: 25%; left: 15%;overflow-y: auto; max-height: 60%; ">
+    <section class="intro">
+      <div class="bg-image h-100">
+        <div class="mask d-flex align-items-center h-100">
+          <div class="container-fluid container-sm">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <div class="card mask-custom">
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-white mb-0" id="salesReportTable" >
+                        <thead
+                          style="
+                            color: black;
+                            font-size: x-large;
+                            border-bottom: 1px solid black;
+                          "
+                        >
+                          <tr > 
+                            <th scope="col" class="d-none d-sm-table-cell">Date</th>
+                            <th scope="col" class="d-none d-sm-table-cell">Order ID</th>
+                            <th scope="col" class="d-none d-sm-table-cell">TotalPrice</th>
+                            <th scope="col" class="d-none d-sm-table-cell">Payment Method</th>
+                           
+                          </tr>
+                        </thead>
+                        <tbody style="color: black; font-weight: normal; font-size: larger;">
+                          <% dailyOrders.forEach(order => { %>
+                            <tr class="fonts">
+                              <th class="fonts" scope="row"><%= order.createdAt.toLocaleDateString() %></th>
+                              <th class="fonts" scope="row"><%= order._id %></th>
+                              <td class="fonts d-none d-sm-table-cell d-md-table-cell">₹<%= order.totalPrice %></td>
+                              <td class="fonts d-none d-sm-table-cell d-md-table-cell"><%= order.paymentMethod %></td>
+                            </tr>
+                          <% }); %>
+                        </tbody>
+                        
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<!-- ... Your existing HTML ... -->
+
+<script>
+
+
+let displayedOrders = []; // Define an array to store the displayed orders
+
+document.addEventListener('DOMContentLoaded', function () {
+  const dailyBtn = document.getElementById('dailyBtn');
+  const weeklyBtn = document.getElementById('weeklyBtn');
+  const monthlyBtn = document.getElementById('monthlyBtn');
+  const yearlyBtn = document.getElementById('yearlyBtn');
+  const startDateInput = document.getElementById('startDate');
+  const endDateInput = document.getElementById('endDate');
+
+  fetchData('daily');
+
+  dailyBtn.addEventListener('click', function () {
+    fetchData('daily');
+  });
+
+  weeklyBtn.addEventListener('click', function () {
+    fetchData('weekly');
+  });
+
+  monthlyBtn.addEventListener('click', function () {
+    fetchData('monthly');
+  });
+
+  yearlyBtn.addEventListener('click', function () {
+    fetchData('yearly');
+  });
+
+  startDateInput.addEventListener('change', function () {
+    fetchOrdersByDateRange();
+  });
+
+  endDateInput.addEventListener('change', function () {
+    fetchOrdersByDateRange();
+  });
+
+  function fetchOrdersByDateRange() {
+    const startDate = startDateInput.value;
+    const endDate = endDateInput.value;
+  
+    console.log(startDate, endDate)
+    if (startDate && endDate) {
+      fetch(`/customDateReports?startDate=${startDate}&endDate=${endDate}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          displayedOrders = data;
+          updateTable();
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }
+  }
+
+  function fetchData(timeRange) {
+    // Reset start and end date inputs
+    startDateInput.value = '';
+    endDateInput.value = '';
+
+    fetch(`/fetchreports?timeRange=${timeRange}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        displayedOrders = data;
+        updateTable();
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }
+
+  function updateTable() {
+    const tableBody = document.querySelector('.table tbody');
+    tableBody.innerHTML = '';
+
+    displayedOrders.forEach(order => {
+      const row = document.createElement('tr');
+      row.classList.add('fonts');
+
+      const dateCell = document.createElement('th');
+      dateCell.classList.add('fonts');
+      dateCell.setAttribute('scope', 'row');
+      dateCell.textContent = new Date(order.createdAt).toLocaleDateString();
+      row.appendChild(dateCell);
+
+      const orderIdCell = document.createElement('th');
+      orderIdCell.classList.add('fonts');
+      orderIdCell.setAttribute('scope', 'row');
+      orderIdCell.textContent = order._id;
+      row.appendChild(orderIdCell);
+
+      const totalPriceCell = document.createElement('td');
+      totalPriceCell.classList.add('fonts', 'd-none', 'd-sm-table-cell', 'd-md-table-cell');
+      totalPriceCell.textContent = `₹${order.totalPrice}`;
+      row.appendChild(totalPriceCell);
+
+      const paymentMethodCell = document.createElement('td');
+      paymentMethodCell.classList.add('fonts', 'd-none', 'd-sm-table-cell', 'd-md-table-cell');
+      paymentMethodCell.textContent = order.paymentMethod;
+      row.appendChild(paymentMethodCell);
+
+      tableBody.appendChild(row);
+    });
+  }
+});
+
+
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+
+    downloadPdfBtn.addEventListener('click', function () {
+  
+      const content = document.getElementById('salesReportTable'); 
+      html2pdf(content);
+    });
+  });
+
+  
+</script>
+
+
+
+
+<!-- ... Your existing HTML ... -->
+
+
+
+<%- include('footer') -%>

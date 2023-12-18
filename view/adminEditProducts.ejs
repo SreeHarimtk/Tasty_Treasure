@@ -1,0 +1,275 @@
+<%- include('header') -%>
+
+<div class="full bg-image" style="background-image: url(https://png.pngtree.com/background/20210710/original/pngtree-fast-food-light-yellow-hamburger-coke-chips-hot-coffee-tomato-sauce-picture-image_981064.jpg); background-size: cover; background-repeat: no-repeat; overflow-y: auto;">
+  <!--navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light container-fluid border-bottom border-warning border-2  shadow position-fixed fixed-top" style="background-color:#FFF0D4;">
+    <div class="container fluid">
+      <img src="" />
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active navbar-text text-black" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-text text-black" href="#">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-text text-black" href="#">Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-text text-black" href="/adminlogout">Log Out</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle navbar-text text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contact</a>
+            <ul class="dropdown-menu navbar-text text-black" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Mobile</a></li>
+              <li><a class="dropdown-item" href="#">965847123</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Email</a></li>
+              <li><a class="dropdown-item" href="#">tastytreasure@gmail.com</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <form class="d-flex">
+          <input class="form-control me-2 outline-warnin" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-outline-warning" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!--navbar-->
+
+  <!-- sidebar -->
+  <div class="sidebar">
+    <h2><i class="fa fa-user-circle border-bottom border-black"></i> ADMIN</h2>
+    <a href="/adminhome"><i class="fa fa-fw fa-home"></i> Home</a>
+    <a href="/addproducts"><i class="fa fa-fw fa-shopping-cart"></i> Add products</a>
+    <a href="/adminUserDetails"><i class="fa fa-fw fa-user"></i> Users</a>
+    <a href="/viewproducts"><i class="fa fa-fw fa-shopping-cart"></i> Products</a>
+    <a href="#contact"><i class="fa fa-fw fa-exchange"></i> Transactions</a>
+    <a href="#contact"><i class="fa fa-fw fa-tag"></i> Coupons</a>
+    <a href="#contact"><i class="fa fa-fw fa-bar-chart"></i> Reports</a>
+  </div>
+  <!-- sidebar -->
+
+
+<!-- form -->
+<div class="container container-lg fonts">
+  <div class="row g-0 align-items-center">
+    <div class="col-lg-6 mb-5 mb-lg-0">
+      <div class="card cascading-right addproductsadmin">
+  
+        <div class="card-body p-5 shadow-5 text-center ">
+          <h2 class="fw-bold mb-5">Update Food Items</h2>
+
+          <form action="/saveproducts" method="post" enctype="multipart/form-data">
+            <!-- Hidden field to store the product ID -->
+            <input type="hidden" name="id" value="<%= product._id %>">
+
+            <div class="row mb-4">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="form3Example3">Name</label>
+                  <input type="text" id="form3Example3" class="form-control custominput" name="name" value="<%= product.name %>" />
+                 
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-outline">
+                  <label class="form-label" for="form3Example4">Description</label>
+                  <input type="text" id="form3Example4" class="form-control custominput" name="description"  value="<%= product.description %>" />
+                 
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-4 ">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="form3Example4">Category</label>
+                  <input type="text" id="form3Example4" class="form-control custominput" name="category" value="<%= product.category %>" />
+                 
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-outline">
+                  <label class="form-label" for="form3Example5">Sub-Category</label>
+                  <input type="text" id="form3Example5" class="form-control custominput" name="subcat" value="<%= product.subcat %>" />
+                  
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row mb-4">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="form3Example6">Price</label>
+                  <input type="number" id="form3Example6" class="form-control custominput" name="price" value="<%= product.price %>" />
+                 
+
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-outline">
+                  <label class="form-label" for="form3Example7">Add Image</label>
+                  <input type="file" id="form3Example7" onchange="viewImages(event)" class="form-control custominput" name="image" multiple />
+                 
+            </div>
+
+
+            <div class="container-fluid">
+              <div class="row" id="imagePreviewContainer"></div>
+            </div>
+            <button type="button" class="btn btn-outline-dark mb-2" onclick="addFileInput()">Add Another Image</button>
+           
+              </div>
+         
+            </div>
+
+
+
+
+            <input type="file" id="form3Example7" onchange="viewImages(event)" class="form-control custominput" name="image" multiple />
+
+<!-- Container to display image previews -->
+<div class="container-fluid">
+  <div class="row" id="imagePreviewContainer">
+    <!-- Existing image previews (if any) -->
+    <% product.image.forEach(image => { %>
+      <div class="col-md-3 mb-2" style="height: 200px; overflow: hidden;">
+        <img src="/uploads/<%= image %>" alt="Image Preview" class="img-fluid" />
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+         
+
+            <button type="submit" class="btn btn-outline-dark mb-2">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- form -->
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<%- include('footer') -%>
+
+
+<script>
+
+function viewImages(event) {
+  const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+  const files = event.target.files;
+
+  for (let i = 0; i < files.length; i++) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.style.width = '100px';
+      img.style.height = '100px';
+      img.style.marginRight = '10px';
+      img.style.marginTop = '10px';
+
+      imagePreviewContainer.appendChild(img);
+    };
+
+    reader.readAsDataURL(files[i]);
+  }
+}
+
+function addFileInput() {
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.className = 'form-control custominput';
+  fileInput.name = 'image';
+  fileInput.addEventListener('change', viewImages);
+
+  const label = document.createElement('label');
+  label.className = 'form-label';
+  label.textContent = 'Add Image';
+
+  const div = document.createElement('div');
+  div.className = 'col-md-6';
+  const formOutline = document.createElement('div');
+  formOutline.className = 'form-outline';
+
+  formOutline.appendChild(fileInput);
+  formOutline.appendChild(label);
+  div.appendChild(formOutline);
+
+  document.getElementById('imagePreviewContainer').appendChild(div);
+}
+
+
+
+
+
+function initializeImagePreviews(images) {
+  const container = document.getElementById('imagePreviewContainer');
+  container.innerHTML = ''; // Clear existing previews
+
+  images.forEach(image => {
+    const preview = document.createElement('div');
+    preview.classList.add('col-md-3', 'mb-2');
+
+    const img = document.createElement('img');
+    img.src = "/uploads/" + image;
+    img.alt = 'Image Preview';
+    img.classList.add('img-fluid');
+
+    preview.appendChild(img);
+    container.appendChild(preview);
+  });
+}
+
+// Function to update image previews based on selected files
+function viewImages(event) {
+  const container = document.getElementById('imagePreviewContainer');
+  const files = event.target.files;
+
+  // Display existing image previews
+  // initializeImagePreviews(<%- JSON.stringify(product.images) %>);
+
+  // Display previews for newly selected images
+  for (const file of files) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const preview = document.createElement('div');
+      preview.classList.add('col-md-3', 'mb-2');
+
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.alt = 'Image Preview';
+      img.classList.add('img-fluid');
+
+      preview.appendChild(img);
+      container.appendChild(preview);
+    };
+
+    reader.readAsDataURL(file);
+  }
+}
+</script>

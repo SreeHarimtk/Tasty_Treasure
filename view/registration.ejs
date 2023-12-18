@@ -1,0 +1,101 @@
+<%- include('header') -%>
+
+
+
+
+
+
+
+<style>
+  .mask-custom {
+    backdrop-filter: contrast(140%) brightness(100%) saturate(100%) sepia(50%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+    mix-blend-mode: lighten;
+    background: rgba(161, 44, 199, 0.31);
+    opacity: 1;
+  }
+</style>
+
+<!-- Background image -->
+<div
+  class="bg-image pt-3 "
+  style="
+    background-image: url('https://www.eatthis.com/wp-content/uploads/sites/4/2020/10/fast-food.jpg?quality=82&strip=1');
+    height: 100vh; background-size:cover ;background-position: center;
+  "
+>
+  <div class="mask mask-custom"></div>
+
+<!-- Background image -->
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light  container">
+  <div class="container fluid ">
+    <img src="">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active navbar-text text-white" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-text text-white" href="#">Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-text text-white" href="#">Reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-text text-white" href="/adminlogin">Admin</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle navbar-text text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </a>
+          <ul class="dropdown-menu navbar-text text-white" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Mobile</a></li>
+            <li><a class="dropdown-item" href="#">965847123</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Email</a></li>
+            <li><a class="dropdown-item" href="#">tastytreasure@gmail.com</a></li>
+          </ul>
+       
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-sucess" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<div class="logodiv" >
+ 
+  <img class="logo" src="/assets/logo-transparent-png.png" ><br>
+  <h3 class="text-success fonts " style="padding-left: 10vw;"><%- message -%></h3>
+</div>
+
+
+
+<div id="intro" class="bg-image shadow-2-strong d-flex">
+  <div class="container content text-white">
+      <div class="row">
+          <div class="col-12 col-md-6 text-left">
+              <h1 class="mb-3">Fastest Food Delivery</h1>
+              <h5 class="mb-4">"Delicious Moments, Delivered to Your Doorstep"</h5>
+              <a class="btn btn-outline-light btn-lg m-2" href="/usersignup" role="button"
+                  rel="nofollow">SIGN UP</a>
+              <a class="btn btn-outline-light btn-lg m-2" href="/userLogin" 
+                 >LOG IN</a>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+ 
+<%- include('footer') -%>

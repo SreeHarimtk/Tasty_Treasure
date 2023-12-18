@@ -1,0 +1,98 @@
+<%- include('header') -%>
+
+
+
+<%- include('navbar') -%>
+
+
+
+
+
+
+  <!-- menu heading -->
+  <div class="container col-12 bg-warning ">
+    <div class="container menubar  bg-white">
+      <div class="container menubarin bg-white">
+        <div class="row justify-content-center bg-white allmenu">
+            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                <a href="/userhome">
+                    <button class="btn rounded-pill btn-outline-warning" type="submit">All</button>
+                </a>
+            </div>
+          <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+            <a href="/filterveg">
+                <button class="btn rounded-pill btn-outline-warning" type="submit">Vegetarian</button>
+            </a>
+        </div>
+        
+        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+          <a href="/filternonveg">
+              <button class="btn rounded-pill btn-outline-warning" type="submit">Non-veg</button>
+          </a>
+      </div>
+
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+        <a href="/filtersweets">
+            <button class="btn rounded-pill btn-outline-warning" type="submit">Sweets</button>
+        </a>
+    </div>
+          
+    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+      <a href="/filterdishes">
+          <button class="btn rounded-pill btn-outline-warning" type="submit">Dishes</button>
+      </a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+
+
+
+
+
+  
+  <!--cards-->
+
+  <div class="container">
+    <div class="row">
+      <% products.forEach(function(item) { %>
+      <div class="col-lg-3 col-md-4 col-sm-6 cards mb-5">
+        <div class="card border-warning shadow border-2" style="width: 18rem;"><a href="/productdetails?id=<%- item._id %>">
+          <img src="../uploads/<%= item.image[0] %>" class="card-img-top img-fluid" style="height: 40vh; object-fit: cover;" alt="...">
+          <div class="card-body "></a>
+            <h5 class="card-title"><%= item.name %></h5>
+            <p class="card-text"><%= item.description %></p>
+            <a href="#" class="btn btn-warning">Buy Now</a>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('footer') -%>

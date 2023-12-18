@@ -1,0 +1,169 @@
+<%- include('header') -%>
+
+<div class="" style="background-color: white;">
+
+ 
+  <nav class="navbar navbar-expand-lg navbar-light container-fluid border-bottom border-warning border-2 bg-light shadow position-fixed fixed-top">
+    <div class="container fluid">
+        <img src="">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item font-weight mt-2" style="margin-right: 3vw;">
+                    <a href="/userprofile"><button type="submit" class="btn btn-warning btn-block ">My Account</button></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active navbar-text text-black" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navbar-text text-black" href="/viewcart">ViewCart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navbar-text text-black" href="/logout">Log Out</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle navbar-text text-white" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Contact
+                    </a>
+                    <ul class="dropdown-menu navbar-text text-black" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Mobile</a></li>
+                        <li><a class="dropdown-item" href="#">965847123</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Email</a></li>
+                        <li><a class="dropdown-item" href="#">tastytreasure@gmail.com</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex" action="/searchproducts" method="GET">
+              <input id="searchInput" class="form-control me-2 outline-warnin" type="search" name="search" placeholder="Search" aria-label="Search" onkeyup="handleSearch()" />
+              <button class="btn btn-outline-warning" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+  </nav>
+  
+  <div class="menuheading">
+    <h3 class="sizeoftext">Our Menu</h3>
+    <div class="textdiv minitext col-md-6 text-center text-md-left">
+        <span>We consider all the drivers of change give you the components you need to create a truly amazing experience.</span>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+
+  
+ 
+
+
+
+  <!-- menu heading -->
+  <div class="container col-12 bg-warning ">
+    <div class="container menubar  bg-white">
+      <div class="container menubarin bg-white">
+        <div class="row justify-content-center bg-white allmenu">
+          <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+            <button class="btn rounded-pill btn-outline-warning" type="submit">all</button>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+            <a href="/filterveg">
+                <button class="btn rounded-pill btn-outline-warning" type="submit">Vegetarian</button>
+            </a>
+        </div>
+        
+        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+          <a href="/filternonveg">
+              <button class="btn rounded-pill btn-outline-warning" type="submit">Non-veg</button>
+          </a>
+      </div>
+
+      <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+        <a href="/filtersweets">
+            <button class="btn rounded-pill btn-outline-warning" type="submit">Sweets</button>
+        </a>
+    </div>
+          
+    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+      <a href="/filterdishes">
+          <button class="btn rounded-pill btn-outline-warning" type="submit">Dishes</button>
+      </a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  
+
+
+
+
+  <!--cards-->
+
+  <div class="container">
+    <div class="row">
+      <% products.forEach(function(item) { %>
+      <div class="col-lg-3 col-md-4 col-sm-6 cards mb-5">
+        <div class="card border-warning shadow border-2" style="width: 18rem;"><a href="/productdetails?id=<%- item._id %>">
+          <img src="../uploads/<%= item.image[0] %>" class="card-img-top img-fluid" style="height: 40vh; object-fit: cover;" alt="...">
+          <div class="card-body "></a>
+            <h5 class="card-title"><%= item.name %></h5>
+            <p class="cardtext"><%= item.description %></p>
+            <a href="#" class="btn btn-warning">Buy Now</a>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+  
+
+
+
+  <!-- suggestions -->
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+</div>
+
+
+
+<script>
+    
+ 
+      
+   
+</script>
+
+
+<%- include('footer') -%>
+
+
+
+
+
+
+
+
+
+
+
+
+  

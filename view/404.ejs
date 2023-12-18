@@ -1,0 +1,82 @@
+
+
+<%- include('header') -%>
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light container-fluid border-bottom border-warning border-2 bg-light shadow position-fixed fixed-top">
+    <div class="container fluid">
+        <img src="">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item font-weight mt-2" style="margin-right: 3vw;">
+                    <a href="/userprofile"><button type="submit" class="btn btn-warning btn-block ">My Account</button></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active navbar-text text-black" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navbar-text text-black" href="/viewcart">ViewCart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navbar-text text-black" href="/logout">Log Out</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle navbar-text text-white" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Contact
+                    </a>
+                    <ul class="dropdown-menu navbar-text text-black" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Mobile</a></li>
+                        <li><a class="dropdown-item" href="#">965847123</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Email</a></li>
+                        <li><a class="dropdown-item" href="#">tastytreasure@gmail.com</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex" action="/searchproducts" method="GET">
+              <input id="searchInput" class="form-control me-2 outline-warnin" type="search" name="search" placeholder="Search" aria-label="Search" onkeyup="handleSearch()" />
+              <button class="btn btn-outline-warning" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+  </nav>
+ 
+ 
+
+
+
+
+<main class="main h-75 d-flex align-items-center justify-content-center">
+    <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+        <div class="p-0 m-0"></div>
+        <!-- End .container -->
+    </nav>
+    <!-- End .breadcrumb-nav -->
+
+    <div class="error-content text-center"
+        style="background-image: url(assets/images/backgrounds/error-bg.jpg)">
+        <div class="">
+            <h1 class="error-title">Error 404</h1>
+            <!-- End .error-title -->
+            <p>We are sorry, the page you've requested is not available.</p>
+            <a href="/" class="btn btn-outline-primary-2 btn-minwidth-lg">
+                <span class="font-weight-bold">BACK TO HOMEPAGE</span>
+                <i class="icon-long-arrow-right"></i>
+            </a>
+        </div>
+        <!-- End .container -->
+    </div>
+    <!-- End .error-content text-center -->
+</main>
+
+
+
+
+<%- include('footer') -%>

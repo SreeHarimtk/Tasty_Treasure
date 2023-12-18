@@ -1,0 +1,415 @@
+<%- include('header') -%>
+
+
+ <!--navbar-->
+ <nav class="navbar navbar-expand-lg navbar-light  container-fluid border-bottom border-warning border-2 bg-light shadow position-fixed fixed-top">
+  <div class="container fluid ">
+    <img src="">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item font-weight mt-2" style="margin-right: 3vw;">
+         <a href="/userprofile"><button type="submit" class="btn btn-warning btn-block "  >My Account</button></a> 
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active navbar-text text-black" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-text text-black" href="/viewcart">ViewCart</a>
+       
+        <li class="nav-item">
+          <a class="nav-link navbar-text text-black" href="/logout">Log Out</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle navbar-text text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </a>
+          <ul class="dropdown-menu navbar-text text-black" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Mobile</a></li>
+            <li><a class="dropdown-item" href="#">965847123</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Email</a></li>
+            <li><a class="dropdown-item" href="#">tastytreasure@gmail.com</a></li>
+          </ul>
+       
+      </ul>
+      <form class="d-flex" action="/searchproducts" method="GET">
+          <input class="form-control me-2 outline-warnin" type="search" name="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-outline-warning" type="submit">Search</button>
+          
+          
+      </form>
+
+      
+    </div>
+
+    
+  </div>
+
+</nav>
+
+
+
+
+
+<div class="container py-5 mx-5 fonts" style="overflow: hidden;">
+  <div class="row">
+      <div class="col-md-4">
+          <div class="card-body p-md-5 text-black" style="max-height: 87vh; overflow-y: hidden; padding: 20px; box-shadow: 5px 5px 5px rgba(0.2, 0.2, 0.2, 0.2);">
+              <h3 class="mb-4 text-uppercase"> Deliver to this Address</h3>
+
+              <div class="mb-4">
+                <label for="addressDropdown" class="form-label text-muted">Select Address:</label>
+                <select class="custominput"  id="addressDropdown" data-addresses="<%= JSON.stringify(adress) %>" onchange="fillAddressForm()" >
+                  <% adress.forEach(function(userAddress) { %>
+                    <option value="<%= userAddress.type %>"><%= userAddress.type %></option>
+                  <% }); %>
+                </select>
+              </div>
+              
+
+
+              <form action="" method="">
+                  <!-- Address form here... -->
+
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <input type="text" id="adress.fullname" class="form-control custominput" name="fullname" style="background-color: transparent;" value="<%= adress.fullname %>"  disabled/>
+                            <label class="form-label text-muted" for="form3Example1m">Full name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <input type="number" id="adress.contactnumber" class="form-control custominput" name="mobilenumber" style="background-color: transparent;" value="<%= adress.contactnumber %>"disabled/>
+                            <label class="form-label text-muted" for="form3Example1n">Mobile Number</label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <input type="text" id="adress.appartmentname" class="form-control custominput" name="appartmentname" style="background-color: transparent;" value="<%= adress.appartmentname %>"disabled/>
+                            <label class="form-label text-muted" for="form3Example1m">Appartment name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <input type="text" id="adress.district" class="form-control custominput" name="district" style="background-color: transparent;" value="<%= adress.district %>" disabled/>
+                            <label class="form-label text-muted" for="form3Example1n">District</label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <input type="text" id="adress.street" class="form-control custominput" name="street" style="background-color: transparent;" value="<%= adress.street %>"disabled/>
+                            <label class="form-label text-muted" for="form3Example1m">Street</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <input type="text" id="adress.pincode" class="form-control custominput" name="pincode" style="background-color: transparent;" value="<%= adress.pincode %>"disabled/>
+                            <label class="form-label text-muted" for="form3Example1n">Pincode</label>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <input type="text" id="adress.state" class="form-control custominput" name="state" style="background-color: transparent;" value="<%= adress.state %>" disabled/>
+                            <label class="form-label text-muted" for="form3Example1m">State</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                            <input type="text" id="adress.landmark" class="form-control custominput" name="landmark" style="background-color: transparent;" value="<%= adress.landmark %>"disabled/>
+                            <label class="form-label text-muted" for="form3Example1n">Landmark</label>
+                           
+                           
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <button class="btn border-dark btn-hover-effect"><a href="/addadress" style="color: inherit; text-decoration: none;">Add Address</a></button>
+                    </div>
+                </div>
+             
+          
+              
+                
+             
+              
+              </form>
+          </div>
+      </div>
+
+
+
+
+
+
+
+
+      <!-- bill details -->
+
+      <div class="col-lg-4 col-md-12 bg-grey" style="background-color: #FFF0D4;" >
+        <div class="p-4">
+          <h3 class="fw-bold mb-4 mt-2 pt-1">Summary</h3>
+          <hr class="my-4">
+
+          <div class="d-flex justify-content-between mb-4">
+            <h5 class="text-uppercase">items 3</h5>
+            <h5>₹<%= price %></h5>
+          </div>
+
+          <h5 class="text-uppercase mb-3">Shipping</h5>
+
+          <div class="mb-4 pb-2">
+            <select class="select" style="background-color: #FFF0D4;" id="paymentMethod">
+              <option value="Cash On Delivery">Cash on Delivery</option>
+              <option value="UPI">UPI</option>
+              <option value="wallet">Wallet</option>
+            </select>
+          </div>
+
+          <div id="insufficientBalanceMessage" style="color: red;"></div>
+
+          <hr class="my-4">
+
+          <div class="d-flex justify-content-between mb-4">
+            <h5 class="text-uppercase">Total price</h5>
+            <h5 id="totalprice">₹<%= price %></h5>
+          </div>
+           
+          <button type="button" class="btn btn-border border-dark btn-block btn-lg btn-hover-effect" data-mdb-ripple-color="dark" onclick="saveOrder()" >Place Order</button>
+        </div>
+      </div>
+
+
+
+
+
+
+  <style>
+    body {
+      background-image: url('https://png.pngtree.com/background/20210710/original/pngtree-fast-food-light-yellow-hamburger-coke-chips-hot-coffee-tomato-sauce-picture-image_981064.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+
+    .custom-disabled {
+        background-color: transparent !important; /* Set background to transparent */
+        color: inherit !important; /* Inherit text color */
+        opacity: 1 !important; /* Make the text fully visible */
+        cursor: not-allowed; /* Change cursor to indicate not-allowed */
+    }
+
+
+  </style>
+
+
+
+
+
+
+
+
+<script>
+  function fillAddressForm() {
+    // console.log('fn called');
+    // Get the selected address type
+    var addresses = JSON.parse(addressDropdown.getAttribute("data-addresses"))
+    // console.log('fulladress', addresses)
+    
+    var selectedType = document.getElementById("addressDropdown").value;
+    // console.log("Selected Address Type:", selectedType);
+
+    // Find the corresponding address in the user's addresses
+    var selectedAddress = addresses.find(function(userAddress) {
+      return userAddress.type === selectedType;
+    });
+  
+
+    // Fill the form fields with the selected address data
+    document.getElementById("adress.fullname").value = selectedAddress.fullname;
+    document.getElementById("adress.contactnumber").value = selectedAddress.contactnumber;
+    document.getElementById("adress.appartmentname").value = selectedAddress.appartmentname;
+    document.getElementById("adress.district").value = selectedAddress.district;
+    document.getElementById("adress.state").value = selectedAddress.state;
+    document.getElementById("adress.pincode").value = selectedAddress.pincode;
+    document.getElementById("adress.landmark").value = selectedAddress.landmark;
+    document.getElementById("adress.street").value = selectedAddress.street;
+   
+    // Repeat the process for other form fields
+
+    // You can add more form fields as needed
+  }
+
+
+  window.onload = function() {
+        fillAddressForm();
+    };
+
+
+
+  async function saveOrder() {
+    console.log('save order called')
+  try {
+   
+    const selectedAddress = {
+      fullname: document.getElementById("adress.fullname").value,
+      contactnumber: document.getElementById("adress.contactnumber").value,
+      appartmentname: document.getElementById("adress.appartmentname").value,
+      district: document.getElementById("adress.district").value,
+      state: document.getElementById("adress.state").value,
+      pincode: document.getElementById("adress.pincode").value,
+      landmark: document.getElementById("adress.landmark").value,
+      street: document.getElementById("adress.street").value,
+     
+    };
+    console.log(selectedAddress)
+   
+    const paymentMethod = document.getElementById("paymentMethod").value;
+    // const discountCode = document.getElementById("discountcode").value;
+    const totalPriceElement = document.getElementById('totalprice');
+    const totalPrice = parseFloat(totalPriceElement.innerText.replace('₹', ''));
+
+    console.log(paymentMethod)
+
+    const payload = {
+      address: selectedAddress,
+      paymentMethod: paymentMethod,
+      // discountCode: discountCode,
+      totalPrice: totalPrice,
+    };
+
+
+const storedOrderDataString = sessionStorage.getItem('orderdata');
+const storedOrderData = JSON.parse(storedOrderDataString);
+console.log('order data',storedOrderData);
+
+    console.log(payload)
+
+
+  fetch('/saveOrder', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ payload, storedOrderData }),
+  
+}).then(response => response.json())
+ .then(response => {
+  console.log('newresponse',response)
+  if(response){
+
+
+    if (response.method == 'COD') {
+
+  console.log('Order details saved successfully.');
+  window.location.href = `/orderplaced`;
+  console.log('response2',response);
+
+}else if(response.method == 'wallet'){
+  window.location.href = '/orderplaced';
+ 
+}  else if (response.message == "Insufficient balance in the wallet") {
+         
+  const insufficientBalanceMessage = document.getElementById('insufficientBalanceMessage');
+        insufficientBalanceMessage.textContent = 'Insufficient balance in the wallet';
+
+       
+        setTimeout(() => {
+          insufficientBalanceMessage.textContent = ''; 
+        }, 3000);
+      }
+      
+       
+else {
+  console.log('Razorpay called.');
+
+  
+  const orderDetails = {
+     "key" : "rzp_test_xXCdaCHm0Ahg5d",
+     "amount" : response.order.amount,
+     "currency" : "INR",
+    image: '', 
+    handler: function (response) {
+    
+      console.log('response2',response);
+    
+      fetch('/verifyRazorpayPayment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ payload,storedOrderData }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('data',data)
+          if (data) {
+   
+            window.location.href = '/orderplaced';
+          } else {
+           
+            console.error('Payment failed:', data.message);
+          }
+        })
+        .catch(error => {
+          console.error('Error verifying payment:', error);
+        });
+    },
+  };
+   console.log('orderdetails',orderDetails)
+  const razorpay = new Razorpay(orderDetails);
+  razorpay.open();
+}
+
+  }
+ })
+
+console.log('newresponse',response)
+
+
+
+
+
+
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+
+   
+
+
+
+
+</script>
+
+
+<style>
+  .btn-hover-effect:hover {
+      background-color: black/* Your hover background color */;
+      color: white/* Your hover text color */;
+      /* Add any other styles for the hover effect */
+  }
+  </style>
+
+<%- include('footer') -%>
+
+
+
+

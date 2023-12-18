@@ -1,0 +1,402 @@
+<%- include('header') -%>
+
+
+<%- include('navbar') -%>
+
+<section class="h-100 h-custom fonts" style="background-color: #FFF0D4;">
+  <div class="container py-5 h-100" style="background-color: #FFF0D4;">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12" style=" border: 1px solid black; box-shadow: 5px 5px 5px rgba(0.2, 0.2, 0.2, 0.2); ">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-8 col-md-12">
+                <div class="p-4" style="background-color: #FFF0D4;" >
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                    <h6 class="mb-0 text-muted"> items</h6>
+                  </div>
+                  <hr class="my-4">
+
+                  <!-- Product Items (Repeat this block for each product) -->
+                  <div class="scrollable-box" style="max-height: 400px; overflow-y: auto; overflow-x: hidden; background-color:#FFF0D4; " >
+                    <% if (userCart.product.length > 0) { %>
+                    <% userCart.product.forEach(item => { %>
+                        <div class="row product-list mb-4 d-flex justify-content-between align-items-center fonts" data-product-id="<%= item.productId._id %>">
+                          <div class="col-1">
+                            <input type="checkbox" name="productCheckbox" class="form-check-input" id="">
+                          </div>
+                          <div class="col-4 col-md-2 col-xl-2">
+                            <img src="../uploads/<%- item.productId.image[0] %>"
+                            class="img-fluid rounded-3" alt="Cotton T-shirt">
+                          </div>
+                          <div class="col-4 col-md-3 col-xl-3">
+                            <h6 class="text-muted"><%= item.productId.name %></h6>
+                            <h6 class="text-black mb-0"><%= item.productId.category %> </h6>
+                          </div>
+                          <div class="col-4 col-md-3 col-xl-2 d-flex">
+
+                            <button class="btn btn-link px-2  " onclick="updateQuantity('<%=item.productId._id%>','dec', calculateAndDisplayTotal())">
+                              <i class="fas fa-minus warning "></i>
+                            </button>
+                            <input id="quantityOf<%= item.productId._id %>" min="1" max="10" value="<%= item.quantity %>" name="quantity"  type="" class="form-control form-control bg-light" style="border: 1px solid warning;" readonly />
+                            <button class="btn btn-link px-2" onclick="updateQuantity('<%=item.productId._id%>','inc', calculateAndDisplayTotal())">
+                              <i class="fas fa-plus"></i>
+                            </button>
+                            <!-- Add this message element -->
+                            
+
+
+                            <!-- Add your quantity update buttons and input here -->
+                          </div>
+                          <div class="col-4 col-md-2 col-xl-2 offset-md-1 offset-xl-0">
+                            <h6 class="mb-0 product-price iprice" >₹<%=item.price  %></h6>
+                          </div>
+                          <div class="col-4 col-md-1 col-xl-1 text-end">
+                            <a href="" onclick="deleteFromCart('<%=item.productId._id%>')" class="text-muted"><i class="fas fa-times"></i></a>
+                          </div>
+                        </div>
+                        <% }); %>
+                        <% } else { %>
+                          <h3>No items in the cart..!!</h3>
+                        <% } %>
+                        
+                      <!-- <h3>No items in the cart</h3> -->
+                   
+                  </div>
+                
+                
+                  
+              
+
+
+                  <!-- Repeat the above block for other products -->
+
+                  <hr class="my-4">
+
+                  <div class="pt-5">
+                    <p id="quantityMessage" style="color: red;display: none; ">Quantity cannot exceed 10.</p>
+                    <h6 class="mb-0"><a href="/userhome" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Back to Home</a></h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-12 bg-grey" style="background-color: #FFF0D4;" >
+                <div class="p-4">
+                  <h3 class="fw-bold mb-4 mt-2 pt-1">Summary</h3>
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-4">
+                    <h5 class="text-uppercase" id="totalItems">items </h5>
+                    <h5  id="eachItemPrice">₹</h5>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-4">
+                    <h5 class="text-uppercase" id="">Shipping</h5>
+                    <h5 id="shippingPrice">₹ 40.00</h5>
+                  </div>
+
+
+                  <h5 class="text-uppercase mb-3">You Have a code ??</h5>
+
+                  <div class="mb-4 pb-2">
+                    <div class="form-outline">
+                      <input type="text" id="couponCode" class="form-control custominput" />
+                      <button class="btn border border-dark mt-3 btn-hover-effect" id="applyCouponBtn">Enter your code</button>
+                    </div>
+                  </div>
+                  
+                  <div id="successMessage" class="alert alert-success" style="display: none;">
+                    Coupon applied successfully!
+                </div>
+                <div id="invalidCouponMessage" class="alert alert-danger" style="display: none;">
+                    Invalid or expired coupon.
+                </div>
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between mb-4">
+                    <h5 class="text-uppercase">Total price</h5>
+                    <h5 id="totalPrice" class="totalPrice">₹</h5>
+                  </div>
+                  
+                  <button  type="button" class="btn btn-border border-dark btn-block btn-lg btn-hover-effect" data-mdb-ripple-color="dark" onclick="checkOut()">Proceed to CheckOut</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<script>
+
+
+
+
+    function calculateAndDisplayTotal() {
+      const allRows = document.querySelectorAll('.product-list');
+      let totalPrice = 0;
+        console.log(allRows)
+        allRows.forEach( (row,i)=> {
+        const quantityInput = row.querySelector('input[name="quantity"]');
+        const priceElement = row.querySelector('.product-price');
+        
+        const price = parseFloat(priceElement.innerText.replace('₹','' ));
+        const quantity = parseInt(quantityInput.value);
+        console.log('price',price)
+        console.log('qty',quantity)
+        console.log('index',i)
+        totalPrice += price * quantity;
+        console.log(i,'totalprice',totalPrice)
+      });
+
+      // Display the total price
+      const totalPriceElement = document.getElementById('eachItemPrice');
+      totalPriceElement.innerText = `₹${totalPrice.toFixed(2)}`;
+
+      const subTotal = document.getElementById('totalPrice');
+      subTotal.innerText = `₹${(totalPrice+40).toFixed(2)}`;
+    }
+
+    
+    calculateAndDisplayTotal();
+
+
+
+
+
+ 
+// update Quantity
+
+async function updateQuantity(productId, action, cb) {
+  try {
+    const quantityInput = document.getElementById(`quantityOf${productId}`);
+    const currentQuantity = parseInt(quantityInput.value);
+
+    
+    if (action === 'inc' && currentQuantity >= 10) {
+      const quantityMessage = document.getElementById('quantityMessage');
+      if (quantityMessage) {
+        quantityMessage.textContent = 'Quantity cannot exceed 10.';
+        quantityMessage.style.display = 'block';
+
+       
+        setTimeout(() => {
+          quantityMessage.style.display = 'none';
+        }, 3000); 
+      }
+
+      return; 
+    }
+
+    const response = await fetch(`/updatequantity?productId=${productId}&action=${action}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log(result.message);
+
+      if (quantityInput) {
+        const newQuantity = Math.min(result.quantity, 10);
+        quantityInput.value = newQuantity;
+      }
+
+      const productRow = document.querySelector(`[data-product-id="${productId}"]`);
+      if (productRow) {
+        const priceElement = productRow.querySelector('.product-price');
+        if (priceElement) {
+          priceElement.textContent = `₹${result.price.toFixed(2)}`;
+        }
+      }
+
+      
+      calculateAndDisplayTotal();
+    } else {
+      console.error('Failed to update product quantity.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+
+
+
+
+
+
+
+async function deleteFromCart(id){
+
+  try {
+    console.log('fn called')
+    console.log(id)
+    const response = await fetch(`/deletefromcart?productId=${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log(result.message);
+    }else {
+      console.error('Failed to delete product from cart');
+    }
+
+  } catch (error) {
+    console.log(error.message)
+  }
+
+}
+
+
+
+
+async function checkOut() {
+  console.log('fn called');
+  try {
+    const totalPriceElement = document.getElementById('totalPrice');
+    const totalPrice = parseFloat(totalPriceElement.innerText.replace('₹', ''));
+    console.log(totalPrice);
+
+    if (totalPrice) {
+      const cartProducts = document.querySelectorAll('.row.product-list');
+      const checkedProducts = [];
+
+      cartProducts.forEach(function (row) {
+        const productId = row.getAttribute('data-product-id');
+        const quantityInput = row.querySelector('input[name="quantity"]');
+        const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
+
+        const priceElement = row.querySelector('.iprice');
+        const price = parseFloat(priceElement.innerText.replace('₹', ''));
+
+        console.log('priceeee',price)
+
+        const product = {
+          id: productId,
+          quantity: quantity,
+          price: price, 
+        };
+
+        checkedProducts.push(product);
+        console.log(product);
+      });
+
+      const orderdata = {
+        totalPrice: totalPrice,
+        products: checkedProducts,
+      };
+      console.log('orderdata', orderdata)
+      sessionStorage.setItem('orderdata', JSON.stringify(orderdata));
+
+      window.location.href = `/checkout?totalPrice=${totalPrice}`;
+    } else {
+      console.error('Failed to initiate checkout.');
+    }
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+
+
+
+// coupon-------------------
+document.getElementById('applyCouponBtn').addEventListener('click', function() {
+    const couponCode = document.getElementById('couponCode').value;
+
+    // Make fetch request to check coupon validity
+    fetch(`/checkCoupon?code=${couponCode}`)
+        .then(response => response.json())
+        .then(couponData => {
+            console.log('coupondata', couponData);
+            if (couponData && couponData.valid) {
+                // Apply discount to total price
+                const discount = couponData.discount;
+                const minprice = couponData.minimumprice
+                const totalPriceElement = document.getElementById('totalPrice');
+                const totalPrice = parseFloat(totalPriceElement.innerText.replace('₹', ''));
+
+                if(minprice <= totalPrice){
+                  const discountedPrice = totalPrice - discount;
+                
+                
+
+                // Update the total price element
+                totalPriceElement.innerText = `₹${discountedPrice.toFixed(2)}`;
+
+                // Display success message
+                document.getElementById('successMessage').style.display = 'block';
+
+                // Hide success message after a certain duration
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 3000); // Hide after 3 seconds (adjust as needed)
+              }else{
+                  document.getElementById('invalidCouponMessage').innerText = 'Coupon cannot be applied. Minimum price condition not met';
+                document.getElementById('invalidCouponMessage').style.display = 'block';
+
+                // Hide invalid coupon message after a certain duration
+                setTimeout(() => {
+                    document.getElementById('invalidCouponMessage').style.display = 'none';
+                }, 3000);
+              }
+            } else {
+                // Display invalid or expired coupon message
+                document.getElementById('invalidCouponMessage').style.display = 'block';
+
+                // Hide invalid coupon message after a certain duration
+                setTimeout(() => {
+                    document.getElementById('invalidCouponMessage').style.display = 'none';
+                }, 3000); // Hide after 3 seconds (adjust as needed)
+
+                // You can display an error message or take other actions if needed
+            }
+        })
+        .catch(error => {
+            console.error('Error checking coupon:', error);
+        });
+});
+
+
+</script>
+
+
+<style>
+.btn-hover-effect:hover {
+    background-color: black/* Your hover background color */;
+    color: white/* Your hover text color */;
+    /* Add any other styles for the hover effect */
+}
+</style>
+
+
+
+
+<%- include('footer') -%>
+
+
+
+
+
+
+
+
+
+
+
+
+  

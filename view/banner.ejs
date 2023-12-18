@@ -1,0 +1,103 @@
+<%- include('header') -%>
+
+
+
+<%- include('navbar') -%>
+
+<div class="full bg-image" style="background-image: url(https://png.pngtree.com/background/20210710/original/pngtree-fast-food-light-yellow-hamburger-coke-chips-hot-coffee-tomato-sauce-picture-image_981064.jpg); background-size: cover; background-repeat: no-repeat; overflow-y: auto;"></div>
+
+<div class="sidebar ">
+    <h2><i class="fa fa-user-circle border-bottom border-black"></i> ADMIN</h2>
+  
+    
+      <a href="/adminhome"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="/addproducts"><i class="fa fa-fw fa-shopping-cart"></i> Add products</a>
+      <a href="/adminUserDetails"><i class="fa fa-fw fa-user"></i> Users</a>
+      <a href="/adminvieworder"><i class="fa fa-fw fa-user"></i> Orders</a>
+      <a href="/viewproducts"><i class="fa fa-fw fa-shopping-cart"></i> Products</a>
+      <a href="/banner"><i class="fa fa-fw fa-tag"></i> Add Banner</a>
+      <a href="/reports"><i class="fa fa-fw fa-bar-chart"></i> Reports</a>
+      <a href="#contact" onclick="showCategoryInput()"><i class="fa fa-fw fa-folder"></i>Add Category</a>
+      <a href="#contact" onclick="showCouponInput()"><i class="fa fa-fw fa-ticket "></i>Add Coupon</a>
+      <a href="#contact" onclick="showOfferInput()"><i class="fa fa-fw fa-ticket "></i>Add Offers</a>
+  
+     
+  </div>
+
+
+
+
+<div class="container border-1 border-black">
+    <div class="row" style="position: absolute;left: 30%; top: 40%;">
+        <form id="bannerForm" enctype="multipart/form-data">
+          <input type="file" class="form-control" name="images" accept="image/*" multiple onchange="previewBanner(this)" />
+
+          <div class="mb-3 mt-3">
+            <label class="form-label fonts">Preview</label>
+            <img id="bannerPreview" class="img-fluid" alt="Banner Preview" style="max-height: 200px;" />
+        </div>
+
+
+            <button class="fonts" type="button" onclick="uploadBanner()">Upload Banner</button>
+          </form>
+        
+
+    </div>
+</div>
+ 
+
+
+</div>
+
+  <script>
+    async function uploadBanner() {
+      
+      const form = document.getElementById('bannerForm');
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('/uploadBanner', {
+          method: 'POST',
+          body: formData,
+        });
+        if (response.ok) {
+                const result = await response.json();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: result.message,
+                });
+            } else {
+                console.error('Failed to upload banner');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Failed to upload banner',
+                });
+            }
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+
+
+    function previewBanner(input) {
+        const preview = document.getElementById('bannerPreview');
+        preview.src = '';
+        
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+  </script>
+
+
+
+
+<%- include('footer') -%>

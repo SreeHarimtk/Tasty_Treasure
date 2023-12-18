@@ -1,0 +1,220 @@
+<%- include('header') -%>
+
+
+
+
+
+
+
+<style>
+  .mask-custom {
+    backdrop-filter: contrast(140%) brightness(100%) saturate(100%) sepia(50%) hue-rotate(0deg) grayscale(0%) invert(0%) blur(0px);
+    mix-blend-mode: lighten;
+    background: rgba(161, 44, 199, 0.31);
+    opacity: 1;
+  }
+</style>
+
+<!-- Background image -->
+<div
+  class="bg-image pt-3 "
+  style="
+    background-image: url('https://www.eatthis.com/wp-content/uploads/sites/4/2020/10/fast-food.jpg?quality=82&strip=1');
+    height: 100vh; background-size:cover ;background-position: center;
+  "
+>
+  <div class="mask mask-custom"></div>
+
+<!-- Background image -->
+
+
+<!--navbar-->
+<nav class="navbar navbar-expand-lg navbar-light  container">
+  <div class="container fluid ">
+    <img src="">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active navbar-text text-white" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-text text-white" href="#">Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-text text-white" href="#">Reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-text text-white" href="/adminlogin">Admin</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle navbar-text text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </a>
+          <ul class="dropdown-menu navbar-text text-white" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Mobile</a></li>
+            <li><a class="dropdown-item" href="#">965847123</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Email</a></li>
+            <li><a class="dropdown-item" href="#">tastytreasure@gmail.com</a></li>
+          </ul>
+       
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-sucess" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<div class="image">
+  <img src="../public/assets/DIAMOND HEART (1).png" >
+</div>
+
+
+
+
+
+
+
+
+
+
+    <!--signup page-->
+  
+  <!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+  <style>
+    .cascading-right {
+      margin-right: -50px;
+    }
+
+    @media (max-width: 991.98px) {
+      .cascading-right {
+        margin-right: 0;
+      }
+    }
+  </style>
+
+  <!-- Jumbotron -->
+  <div class="container py-4 fonts">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="
+            ">
+          <div class="card-body p-5 shadow-5 text-center" style=" background: rgba(83, 76, 76, 0.2);   border-radius: 2em; box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);; ">
+            <h2 class="fw-bold mb-5">Log into your Account</h2>
+            <form action="" method="" >
+      
+
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Email address</label>
+                <input type="email" id="email" class="form-control custominput" name="email" required />
+               
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example4">Password</label>
+                <input type="password" id="password" class="form-control custominput" name="password" required />
+              
+              </div>
+
+            
+
+              <!-- Submit button -->
+              <button type="button" onclick="verifyLogin()" class="btn btn-outline-dark mb-4 ">
+                Log In
+              </button>
+              <h3 class="text-danger" id="loginMessages"></a><%- message %></h3>
+              <br>
+              <span><a href="/forget">forget password ?</a></span>
+           
+
+              <!-- Register buttons -->
+            
+
+             
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+   
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->
+
+
+
+
+
+
+
+
+
+  <div class="container content text-white userbg">
+    
+      <div class="row">
+          <div class="col-12 col-md-6 text-left">
+            
+              <h1 class="mb-3">Fastest Food Delivery</h1>
+              <h5 class="mb-4">"Delicious Moments, Delivered to Your Doorstep"</h5>
+              <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button"
+                  rel="nofollow" target="_blank">SIGN UP</a>
+              <a class="btn btn-outline-light btn-lg m-2" href="httpsmdbootstrap.com/docs/standard/" target="_blank"
+                  role="button">LOG IN</a>
+          </div>
+          <h5 class="text-danger fonts"  ><%= message %></h5>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<script>
+
+async function verifyLogin() {
+        console.log('fn called')
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const response = await fetch('/userlogin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+             
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log(data)
+            document.getElementById('loginMessages').innerHTML = data.message;
+          
+           
+            if (data.redirect) {
+                window.location.href = data.redirect;
+            }
+            
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+</script>
+
+
+  <%- include('footer') -%>

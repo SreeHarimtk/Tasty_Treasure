@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@700&family=Open+Sans:ital,wght@0,600;1,600&family=PT+Sans+Narrow:wght@700&family=Roboto:ital,wght@1,500&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@500&family=RocknRoll+One&display=swap');
+
+
+*{
+   box-sizing: border-box;
+  
+}
+
+  .full{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    background-image: url('https://img.freepik.com/free-photo/top-view-boxes-asian-food_23-2148242493.jpg');
+   background-size: cover;
+   position: relative; 
+   
+
+  }
+
+
+
+  .navbar {
+   
+    background: rgba(255, 255, 255, 0.411); 
+    position: centre;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(10px); 
+   font-size: larger;
+    font-family: 'RocknRoll One', sans-serif;
+}
+
+
+.content {
+    position: absolute;
+    top: 60%; 
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    font-family: 'RocknRoll One', sans-serif;
+}
+
+
+.logo{
+    max-width: 30vw;
+    max-height: 20vh;
+    position: absolute ;
+    left: 40px;
+    top:30%;
+    margin-left: 4vw;
+}
+
+.logodiv{
+   width: 30%;
+    height: 40%;
+} 
+
+.userbg{
+    visibility:hidden;
+}
+
+.menuheading{
+    position:absolute;
+    left: 38vw;
+    top:15vh;
+  
+}
+
+.sizeoftext{
+    font-family: 'RocknRoll One';
+    font-size:6vh;
+}
+
+.subtext{
+    text-align:justify;
+}
+
+.textdiv{
+    background-color: rgb(255, 255, 255);
+    width: 58%;
+    margin-left: -4vw;
+    font-size: small;
+    padding-left: -1vh;
+
+}
+
+.minitext{
+    font-family: 'RocknRoll One';
+    color: rgba(94, 100, 100, 0.766);
+    background-color: white
+  
+}
+
+.menubar{
+    position: absolute;
+    top: 35%;
+    background-color: white;
+    height: -50vh;
+   
+}
+
+.menubarin{
+    align-items: center;
+    z-index: 900vh;
+}
+
+.cards{
+    position: relative;
+    top: 50vh;
+}
+
+.fonts{
+      font-family: 'RocknRoll One';
+}
+
+.suggestions{
+
+    position: relative;
+    top:50vh
+}
+
+.signupdiv{
+    height: max-content;
+}
+
+
+
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color:#f8bc44;
+    position: fixed;
+    top:10vh;
+    height: auto;
+    overflow: auto;
+    border-right: 1px solid #ccc; /* Add a right border */
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2); /* Add shadow on the right */
+    padding: 10px; /* Add some padding for spacing */
+    font-family: 'RocknRoll One';
+}
+   
+  
+  
+  
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active,
+  .sidebar a:active { /* Add :active pseudo-class for the active state during click */
+      background-color: #ffffff;
+      color: #ffffff; /* Set the text color to white */
+  }
+  
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #ffffff;
+    color:#FFC107
+  }
+  
+  .sidebarcontent {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height:auto;
+  }
+
+  
+  
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+
+.cardposition{
+   padding-left: 30vh;
+   padding-top: 10vh;
+   border:2px;
+   border-color: #FFC107;
+   background-image: "https://previews.123rf.com/images/creedcube/creedcube1607/creedcube160700117/60428487-simple-line-art-food-seamless-pattern-on-yellow-background.jpg";
+
+}
+
+.cardtext{
+  display: -webkit-box;
+    -webkit-line-clamp: 1; /* Limit to one line */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+  
+.usercentrediv{
+  position: relative;
+  top: 10vh;
+  left: 5vw;
+  width: 80%;
+  overflow: auto;
+ 
+}
+
+
+.addproductsadmin{
+  position: relative;
+  left: 25vw;
+  top: 10vh;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 2em;
+  backdrop-filter: blur(25px);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  background-clip: padding-box;
+  box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+ 
+  
+}
+
+.allmenu{
+  position:sticky;
+  top: 70px;
+  z-index: 1000;
+
+}
+
+
+html,
+body,
+.intro {
+  height: 100%;
+}
+
+
+.mask-custom {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 2em;
+  backdrop-filter: blur(25px);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  background-clip: padding-box;
+  box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+}
+
+
+.custominput{
+  border: none;
+    border-bottom: 1px solid #000; /* Change the color as needed */
+    background-color: transparent;
+}
+
+
+ .custombutton {
+  border: 2px solid #007bff; 
+  padding: 10px 20px;
+  background-color: transparent; 
+  color: #007bff; 
+  border-radius: 5px; 
+  cursor: pointer;
+}
+
+.forlogin{
+
+  background:#f8bc44;
+  border-radius: 2em;
+  backdrop-filter: blur(25px);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  background-clip: padding-box;
+  box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+
+}
+
+
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* productDetails */
+
+
+.photostyle{
+  width:100px;
+  height:auto
+}
+
+
+
+.paginationclass{
+  position: fixed;
+  bottom: 50vh;
+  right: 5%;
+  top: 50%;
+  flex-direction: column !important;
+  color: #f8bc44 !important;
+  background-color: #f8bc44;
+
+}
+
+
+.grayscale-image {
+  filter: grayscale(100%);
+}
+
+
+
+.viewcards{
+  display: flex ;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  
+}
+
+
+
+.carousel-item{
+
+ margin-top: 60vh;
+ margin-bottom: 30vh;
+border: 0 solid white;
+}
+
+
+.imgheight{
+  width: 100%;
+  height: 65vh !important;
+
+}
+
+.imght{
+  max-width: 100%;
+  max-height: 50vh;
+}

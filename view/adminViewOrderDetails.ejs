@@ -1,0 +1,154 @@
+ 
+  <%- include('header') -%>
+ 
+ 
+  <%- include('navbar') -%>
+ 
+
+
+  <div class="full bg-image"
+  style="background-image: url(https://png.pngtree.com/background/20210710/original/pngtree-fast-food-light-yellow-hamburger-coke-chips-hot-coffee-tomato-sauce-picture-image_981064.jpg); background-size: cover; background-repeat: no-repeat; overflow-y: auto;">
+
+
+
+      
+  <div class="sidebar ">
+    <h2><i class="fa fa-user-circle border-bottom border-black"></i> ADMIN</h2>
+  
+    
+      <a href="/adminhome"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="/addproducts"><i class="fa fa-fw fa-shopping-cart"></i> Add products</a>
+      <a href="/adminUserDetails"><i class="fa fa-fw fa-user"></i> Users</a>
+      <a href="/adminvieworder"><i class="fa fa-fw fa-user"></i> Orders</a>
+      <a href="/viewproducts"><i class="fa fa-fw fa-shopping-cart"></i> Products</a>
+      <a href="#contact"><i class="fa fa-fw fa-exchange"></i> Transactions</a>
+      <a href="#contact"><i class="fa fa-fw fa-tag"></i> Coupons</a>
+      <a href="#contact"><i class="fa fa-fw fa-bar-chart"></i> Reports</a>
+  </div>
+
+
+
+
+  <!-- Table -->
+
+
+  <div class="text-center center-div container py-2 usercentrediv  ">
+    <section class="intro">
+      <div class="bg-image h-100">
+        <div class="mask d-flex align-items-center h-100">
+          <div class="container-fluid container-sm">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <div class="card mask-custom">
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-white mb-0">
+                        <thead
+                          style="
+                            color: black;
+                            font-size: x-large;
+                            border-bottom: 1px solid black;
+                          "
+                        >
+                          <tr>
+                            <th scope="col" class="d-none d-sm-table-cell">Date</th>
+                            <th scope="col" class="d-none d-sm-table-cell">Customer Name</th>
+                            <th scope="col" class="d-none d-sm-table-cell">Status</th>
+                            <th scope="col" class="d-none d-sm-table-cell">TotalPrice</th>
+                            <th scope="col" class="d-none d-sm-table-cell">Payment Method</th>
+                            <th scope="col" class="d-none d-sm-table-cell">Action</th>
+                           
+                          </tr>
+                        </thead>
+                        <tbody
+                          style="
+                            color: black;
+                            font-weight: normal;
+                            font-size: larger;
+                          "
+                        >
+                          <br />
+                          <tr class="fonts">
+                            <% orderdetails.forEach(order => { %>
+                              <tr>
+                                <th class="fonts" scope="row"><%= order.createdAt.toLocaleDateString() %></th>
+                                <th class="fonts" scope="row"><%= order.userID.first_name %> <%= order.userID.second_name %> %></th>
+                                <td class="fonts d-none d-sm-table-cell d-md-table-cell">
+                                  <select name="status" id="statusSelectors" style="background-color: transparent; border: 0;" onchange="updateOrderStatus('<%= order._id %>', this.value)">
+                                      <option value="Order Placed" <%= order.status === 'Order Placed' ? 'selected' : '' %>>Order Placed</option>
+                                      <option value="Pending" <%= order.status === 'Pending' ? 'selected' : '' %>>Pending</option>
+                                      <option value="Delivered" <%= order.status === 'Delivered' ? 'selected' : '' %>>Delivered</option>
+                                      <option value="Shipped" <%= order.status === 'Shipped' ? 'selected' : '' %>>Shipped</option>
+                                      <option value="Shipped" <%= order.status === 'Cancelled' ? 'selected' : '' %>>Cancelled</option>
+                                  </select>
+                              </td>
+                              
+                                <td class="fonts d-none d-sm-table-cell d-md-table-cell">₹<%= order.totalPrice %></td>
+                                <td class="fonts d-none d-sm-table-cell d-md-table-cell"><%= order.paymentMethod %>
+                                <td>
+                                  <a href="">
+                                    <button type="button" class="btn btn-outline-primary toggleBlock btn-outline-dark" onclick="">
+                                    CANCEL
+                                    </button>
+                                  </a>
+                                </td>
+                              </tr>
+                           
+                            <% }); %>
+                            
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+  <script>
+  async function updateOrderStatus(orderId, newStatus) {
+        console.log('Order ID:', orderId);
+        console.log('New Status:', newStatus);
+
+        const response = await fetch('/updateOrderStatus', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ orderId, newStatus }),
+            });
+
+           
+            if (response.ok) {
+                console.log('Order status updated successfully');
+            } else {
+            
+                console.error('Failed to update order status:', response.statusText);
+            }
+
+   }
+</script>
+
+    
+
+
+
+  <%- include('footer') -%>

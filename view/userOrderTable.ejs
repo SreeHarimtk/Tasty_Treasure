@@ -1,0 +1,270 @@
+<%- include('header') -%>
+<%- include('navbar') -%>
+
+<div class="full bg-image" style="background-image: url(https://png.pngtree.com/background/20210710/original/pngtree-fast-food-light-yellow-hamburger-coke-chips-hot-coffee-tomato-sauce-picture-image_981064.jpg); background-size: cover; background-repeat: no-repeat; overflow-y: auto;">
+
+  <div class="col-md-4 mt-3">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2><i class="fa fa-user-circle border-bottom border-black"></i></h2>
+      <a href="/adminhome"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="/addproducts"><i class="fa fa-fw fa-shopping-cart"></i> Wish List</a>
+      <a href="/viewproducts"><i class="fa fa-fw fa-shopping-cart"></i> Orders</a>
+      <a href="#contact"><i class="fa fa-fw fa-exchange"></i> Transactions</a>
+      <a href="/addadress"><i class="fa fa-fw fa-tag"></i> Address</a>
+      <a href=""><i class="fa fa-fw fa-bar-chart"></i> Password</a>
+    </div>
+  </div>
+
+ 
+
+
+
+
+
+
+
+
+<!-- Sidebar -->
+     
+      
+<div class="sidebar ">
+  <h2><i class="fa fa-user-circle border-bottom border-black"></i> <%= userData.first_name %></h2>
+
+  
+    <a href="/userhome"><i class="fa fa-fw fa-home"></i> Home</a>
+    <a href="/addproducts"><i class="fa fa-fw fa-shopping-cart"></i>Wish List</a>
+    
+    <a href="/userordertable"><i class="fa fa-fw fa-shopping-cart"></i>Orders</a>
+    <a href="#contact"><i class="fa fa-fw fa-exchange"></i> Transactions</a>
+    <a href="/addadress"><i class="fa fa-fw fa-tag"></i> Adress</a>
+    <a href="/resetpassword"><i class="fa fa-fw fa-bar-chart"></i>Password</a>
+</div>
+
+   <!-- centreform -->
+   <div class="text-center center-div container py-2 usercentrediv  ">
+    <section class="intro">
+      <div class="bg-image h-100">
+        <div class="mask d-flex align-items-center h-100">
+          <div class="container-fluid container-sm">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <div class="card mask-custom">
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-borderless text-white mb-0">
+                        <thead
+                          style="
+                            color: black;
+                            font-size: x-large;
+                            border-bottom: 1px solid black;
+                          "
+                        >
+                          <tr>
+                            <th scope="col" class="d-none d-sm-table-cell">Date</th>
+                            <th scope="col" class="d-none d-sm-table-cell">Status</th>
+                            <th scope="col" class="d-none d-sm-table-cell">TotalPrice</th>
+                            <th scope="col" class="d-none d-sm-table-cell">View Details</th>
+                            <th scope="col" class="d-none d-sm-table-cell">Action</th>
+                           
+                          </tr>
+                        </thead>
+                        <tbody
+                          style="
+                            color: black;
+                            font-weight: normal;
+                            font-size: larger;
+                          "
+                        >
+                          <br />
+                          <tr class="fonts">
+                            <% orderData.forEach(order => { %>
+                              <tr>
+                                <th class="fonts" scope="row"><%= order.createdAt.toLocaleDateString() %></th>
+                                <td class="fonts d-none d-sm-table-cell d-md-table-cell"><%= order.status %></td>
+                                <td class="fonts d-none d-sm-table-cell d-md-table-cell">₹<%= order.totalPrice %></td>
+                                <td class="fonts d-none d-sm-table-cell d-md-table-cell"><a href="/vieworder?id=<%= order._id %>">View Details</a>
+                                  <td class="fonts d-none d-sm-table-cell d-md-table-cell">
+                                    <% if (order.status === 'Delivered') { %>
+                                        <a href="/addReviewButton?id=<%= order._id %>">
+                                            <button type="button" class="btn btn-outline-primary toggleBlock btn-outline-dark">
+                                                RATE THIS ORDER
+                                            </button>
+                                        </a>
+                                    <% } else { %>
+                                        <a href="">
+                                            <button type="button" class="btn btn-outline-primary toggleBlock btn-outline-dark" onclick="cancelOrder('<%= order._id %>')">
+                                                CANCEL
+                                            </button>
+                                        </a>
+                                    <% } %>
+                                </td>
+                                <td>
+                                 <a href="/getOrderData?id=<%= order._id %>">
+                                    <button type="button" class="btn btn-outline-primary toggleBlock btn-outline-dark">
+                                      <i class="fas fa-arrow-down"></i> 
+                                    </button>
+                                  </a>
+                                </td>
+                              </tr>
+                              <h3><%= message %></h3>
+                            <% }); %>
+                            
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+  <!-- centreform -->
+
+
+
+
+
+
+
+ 
+
+
+
+  
+<script>
+
+
+  async function cancelOrder(orderId) {
+    try {
+      const response = await fetch(`/cancelorder?id=${orderId}`, {
+        method: 'GET', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result.message);
+      
+      } else {
+        console.error('Failed to cancel order');
+     
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+     
+    }
+  }
+
+
+
+
+//   async function downloadInvoice(orderId) {
+//     try {
+//         const response = await fetch(`/getOrderData?id=${orderId}`, {
+//             method: 'GET',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//         });
+
+//         if (response.ok) {
+//             const result = await response.json();
+//             generateInvoicePDF(result);
+//         } else {
+//             console.error('Failed to download invoice');
+//         }
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// }
+
+// function generateInvoicePDF(invoiceData) {
+    
+//   console.log('indata',invoiceData)
+//   const invoiceHtml = `
+//         <h2>Invoice Details</h2>
+//         <p>Address: ${invoiceData.address.fullname}</p>
+//         <p>Total: ${invoiceData.total}</p>
+//         <p>Payment Method: ${invoiceData.paymentMethod}</p>
+
+//     `;
+// console.log('html',invoiceHtml)
+//     // Convert HTML to PDF using html2pdf
+//     html2pdf().from(invoiceHtml).outputPdf().then(pdf => {
+//         const blob = new Blob([pdf], { type: 'application/pdf' });
+//         const link = document.createElement('a');
+//         link.href = URL.createObjectURL(blob);
+//         link.download = 'invoice.pdf';
+//         link.click();
+//     });
+// }
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<%- include('footer') -%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+

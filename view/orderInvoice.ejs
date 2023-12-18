@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+<!-- 
+<h1 class="fonts">Tasty Treasure</h1>
+
+<% address.forEach((addressItem) => { %>
+    <h2>Address Details</h2>
+    <p>Full Name: <%= addressItem.fullname %></p>
+    <p>Contact Number: <%= addressItem.contactnumber %></p>
+    <p>Apartment Name: <%= addressItem.appartmentname %></p>
+    <p>District: <%= addressItem.district %></p>
+    <p>State: <%= addressItem.state %></p>
+    <p>Street: <%= addressItem.street %></p>
+    <p>Pincode: <%= addressItem.pincode %></p>
+    <p>Landmark: <%= addressItem.landmark %></p>
+  <% }); %>
+
+    <div>
+        <h2>Product Details:</h2>
+        <ul>
+            <% productDetails.forEach(product => { %>
+                <li><%= product.productName %> - Quantity: <%= product.quantity %>, Price: <%= product.price %></li>
+            <% }) %>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Total Price: <%= total %></h2>
+        <h2>Payment Method: <%= paymentMethod %></h2>
+    </div> -->
+
+
+
+
+
+
+    <div class="card">
+      <div class="card-header bg-black"></div>
+      <div class="card-body">
+  
+          <div class="container">
+              <div class="row">
+                  <div class="col-xl-12 text-center">
+                      <i class="far fa-building text-danger fa-6x float-start"></i>
+                      <h2 style="font-size: 30px; color: rgb(249, 195, 94)" class="fonts">Tasty Treasure</h2>
+                  </div>
+              </div>
+  
+              <div class="row text-center mt-3">
+                  <h5 class="text-uppercase fonts" style="font-size: 40px;">Invoice Bill</h5>
+                  <p class="fonts text-muted">Invoice Bill No: <%= invoiceNumber %></p>
+              </div>
+  
+              <div class="row mx-3">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th scope="col">Product</th>
+                              <th scope="col">Quantity</th>
+                              <th scope="col">Price</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <% productDetails.forEach(product => { %>
+                              <tr>
+                                  <td><%= product.productName %></td>
+                                  <td><%= product.quantity %></td>
+                                  <td><%= product.price %></td>
+                              </tr>
+                          <% }) %>
+                      </tbody>
+                  </table>
+              </div>
+  
+              <div class="row">
+                  <div class="col-xl-8">
+                      <ul class="list-unstyled float-end me-0">
+                        <li><span class="me-5">Payment Method: </span><i class="fas fa-dollar-sign"></i><%= paymentMethod %></li>
+                          <li><span class="me-5">Discount: </span><i class="fas fa-dollar-sign"></i> -30%</li>
+                          <li><span class="me-5">Shipment: </span><i class="fas fa-dollar-sign"></i> ₹40/-</li>
+                      </ul>
+                  </div>
+              </div>
+              <hr>
+  
+              <div class="row">
+                  <div class="col-xl-8" style="margin-left:60px">
+                    <h4><span class="me-3 float-start text-warning">Total Amount:</span><i class="fas fa-dollar-sign"></i> ₹<%= total %>/-</h4>
+                  </div>
+              </div>
+  
+              <div class="row mt-2 mb-5">
+                  <p class="fw-bold">Date: <span class="text-muted">14 Dec 2023</span></p>
+                  <p class="fw-bold mt-3">Signature:</p>
+              </div>
+          </div>
+      </div>
+      <div class="card-footer bg-black"></div>
+  </div>
+  
+  
+
+
+
+
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
