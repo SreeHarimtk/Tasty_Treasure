@@ -38,6 +38,9 @@ const productSchema = new mongoose.Schema({
             review: {
                 type: String,
             },
+            rating: {
+                type: Number
+            }
         },
     ],
     
@@ -48,7 +51,7 @@ const productSchema = new mongoose.Schema({
   
         softDelete: {
             type: Number,
-            default: 0, // assuming 0 means not soft-deleted
+            default: 0, 
         },
     });
 ;

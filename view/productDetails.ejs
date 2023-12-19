@@ -86,20 +86,30 @@
       <% if (products.reviews && products.reviews.length > 0) { %>
           <table class="table">
               <thead>
-                  <tr>
+                  <tr class="fonts">
                       <th>Username</th>
-                      <th>Rating</th>
                       <th>Review</th>
+                      <th>Rating</th>
                   </tr>
               </thead>
-              <tbody>
+              <tbody id="reviews-list">
+                <% if (products.rating || (products.reviews && products.reviews.length > 0)) { %>
                   <% products.reviews.forEach(function (review) { %>
-                      <tr>
-                          <td><%= review.username %></td>
-                          <td><%= review.rating %></td>
-                          <td><%= review.review %></td>
-                      </tr>
-                  <% }) %>
+                    <tr class="fonts">
+                      <td><%= review.username %></td>
+                      <td><%= review.review %></td>
+                      <td>
+                        <% for (let i = 0; i < review.rating; i++) { %>
+                          ⭐
+                        <% } %>
+                      </td>
+                    </tr>
+                  <% }); %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="3">No reviews available for this product.</td>
+                  </tr>
+                <% } %>
               </tbody>
           </table>
       <% } else { %>

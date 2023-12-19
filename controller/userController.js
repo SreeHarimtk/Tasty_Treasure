@@ -556,7 +556,7 @@ const searchProducts = async (req, res) => {
             res.render('userProfile',{adress,userData})
            
        }else{
-       
+        res.render('userLogin', { message: 'Please login again' });
        }
    
     }catch(error){
@@ -587,6 +587,8 @@ const editProfile = async(req,res)=>{
             const id = req.session.user_id
             userData = await User.findById({_id : id})
             res.render('editUserProfile',{userData,message:''})
+        }else{
+            res.render('userLogin', { message: 'Please login again' });
         }
 
     }catch(error){
@@ -618,6 +620,8 @@ const updateUserProfile = async(req,res)=>{
             }
              res.render('editUserprofile',{message : 'Profile Updated Succesfully !!'})
 
+        }else{
+            res.render('userLogin', { message: 'Please login again' });
         }
     } catch (error) {
         console.log(error.message)
@@ -716,64 +720,37 @@ const getOrderData = async (req, res) => {
 
 
 
-// const getOrderData = async (req, res) => {
-//     try {
-//         const orderId = req.query.id;
-//         const orderData = await order.findById({ _id: orderId });
-        
-//         if (!orderData) {
-//             return res.status(404).json({ message: 'Order not found' });
-//         }
-
-//         const address = orderData.address;
-//         const total = orderData.totalPrice;
-//         const paymentMethod = orderData.paymentMethod;
-
-//         const productDetails = await Promise.all(orderData.product.map(async (product) => {
-//             const productData = await products.findById(product.productID);
-//             return {
-//                 productName: productData.name,
-//                 quantity: product.quantity,
-//                 price: productData.price,
-//             };
-//         }));
-
-   
-     
-//     } catch (error) {
-//         console.error(error.message);
-//         res.status(500).json({ message: 'Internal Server Error' });
-//     }
-// };
-
-
-
-
 
 const addReview = async(req,res)=>{
 
     try {
-        const id = req.session.user_id
+        if(req.sesssion.user_id){
+            const id = req.session.user_id
 
-        const userData = await User.findById(id)
-        console.log('usereview',userData)
-        const username = userData.first_name;
-
-        const { productId, rating, review } = req.body;
-
-    const product = await products.findById(productId);
-    console.log('rev product',product)
-
-    product.reviews.push({ username, review });
-    product.ratings.push(parseInt(rating));
-
- 
-    const newAverageRating = product.ratings.reduce((sum, r) => sum + r, 0) / product.ratings.length;
-    product.averageRating = newAverageRating;
-
-    await product.save();
-
-    res.redirect('/productdetails/'+productId)
+            const userData = await User.findById(id)
+            console.log('usereview',userData)
+            const username = userData.first_name;
+    
+            const { productId, rating, review } = req.body;
+    
+        const product = await products.findById(productId);
+        console.log('rev product',product)
+    
+        product.reviews.push({ username, review, rating: parseInt(rating)});
+        product.ratings.push(parseInt(rating));
+    
+     
+        const newAverageRating = product.ratings.reduce((sum, r) => sum + r, 0) / product.ratings.length;
+        product.averageRating = newAverageRating;
+    
+        await product.save();
+    
+        res.redirect('/productdetails/'+productId)
+    
+    }else{
+        res.render('userLogin', { message: 'Please login again' });
+    }
+     
         
     } catch (error) {
         console.log(error.message)
@@ -784,11 +761,17 @@ const addReview = async(req,res)=>{
 const getReview = async(req,res)=>{
     try {
 
-        const productId = req.params.productId;
+        if(req.session.user_id){
+            const productId = req.params.productId;
    
-    const reviews = await products.findById(productId)
-    console.log('reviews',reviews)
-    res.json({ reviews });
+            const reviews = await products.findById(productId)
+            console.log('reviews',reviews)
+            res.json({ reviews });
+        }else{
+            res.render('userLogin', { message: 'Please login again' });
+        }
+
+   
         
     } catch (error) {
         console.log(error.message)
@@ -816,6 +799,9 @@ const addReviewButton = async(req,res)=>{
             console.log('orderdetails',orderDetail)
             console.log('details', productDetails);
             res.render('orderReviewPage', { userData, orderDetail, productDetails });
+            }
+            else{
+                res.render('userLogin', { message: 'Please login again' });
             }
         
     } catch (error) {
