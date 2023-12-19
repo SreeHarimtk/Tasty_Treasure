@@ -219,7 +219,7 @@ const matchOtp = async (req, res) => {
     
   
       if (otp === req.body.otp) {
-        await User.findByIdAndUpdate(userId, { $set: { is_verified: 1 } });
+        await User.findByIdAndUpdate(userId, { $set: { is_verified: 1 } },{new:true});
         res.render('userLogin',{message :'Registered Succesfully...'});
       } else {
         res.render('otpVerification',{message : 'Incorrect OTP'});
