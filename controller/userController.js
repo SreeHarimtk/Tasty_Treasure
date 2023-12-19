@@ -241,6 +241,7 @@ const sendMail = (message,reciever)=>{
         service: 'Gmail', 
         host:'smtp.gmail.com',
         port:587,
+        secure: false,
         auth: {
             user: process.env.EMAil,
             pass: process.env.MAIL_PASS,
