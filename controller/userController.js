@@ -291,11 +291,11 @@ const verifyLogin = async (req, res) => {
                 } else if (userData.is_admin === 0 && userData.is_blocked === false && userData.is_verified == 1) {
                     req.session.user_id = userData._id;
                     res.json({ message: '', redirect: '/userhome' });
+                     console.log('userdata',userData)
 
-
-                } else if (userData.is_blocked === true) {
+                } else if (userData.is_blocked === true || userData.is_verified == 0) {
                     console.log('User is blocked');
-                    res.json({ message: 'Access denied by Admin...!!' });
+                    res.json({ message: 'Access denied !!!' });
                 }
             } else {
                 res.json({ message: ' Incorrect Password' });
