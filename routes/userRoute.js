@@ -20,6 +20,7 @@ user_route.use(session({secret:config.sessionSecret,resave:false,saveUninitializ
 const auth = require('../middleware/auth')
 
 const userController=require('../controller/userController')
+const { notFound } = require('../middleware/errorHandlers')
 // const errorHandlers = require('../middleware/errorHandlers')
 
 user_route.get('/',auth.isLogout,userController.loadRegister)
@@ -65,6 +66,8 @@ user_route.get('/getReviews/:productId',userController.getReview)
 user_route.get('/addReviewproduct',userController.reviewPage)
 
 user_route.get('/addReviewButton',userController.addReviewButton)
+
+// user_route.get('/404',userController.load404)
 
 
 // user_route.use(errorHandlers.notFound)

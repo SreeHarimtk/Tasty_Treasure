@@ -1,7 +1,10 @@
 
 const notFound = (req, res, next) => {
     const error = new Error(`Not Found: ${req.originalUrl}`);
-    res.status(404).render('404'); // Assuming '404' is the name of your error handling page
+    // const id = req.params.id 
+    
+    res.status(404).render('404');
+  // Assuming '404' is the name of your error handling page
     next(error); // Pass the error to the next error handling middleware
   };
   

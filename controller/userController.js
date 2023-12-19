@@ -241,7 +241,7 @@ const sendMail = (message,reciever)=>{
         service: 'Gmail', 
         host:'smtp.gmail.com',
         port:587,
-        secure: false,
+        // secure: false,
         auth: {
             user: process.env.EMAil,
             pass: process.env.MAIL_PASS,
@@ -265,7 +265,7 @@ const sendMail = (message,reciever)=>{
 module.exports = transporter;
 
     } catch (error) {
-        
+        console.log(error.message)
     }
 }
 
@@ -832,6 +832,15 @@ const reviewPage = async(req,res)=>{
 }
 
 
+// const load404 = async(req,res)=>{
+
+//     try {
+//       res.render('404')    
+//     } catch (error) {
+//         console.log(error.message)
+//     }
+// }
+
 
 
 
@@ -863,7 +872,8 @@ module.exports={
     addReview,
     getReview,
     addReviewButton,
-    reviewPage
+    reviewPage,
+    // load404
  
 
 
