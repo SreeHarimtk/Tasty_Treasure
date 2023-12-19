@@ -288,7 +288,7 @@ const verifyLogin = async (req, res) => {
                     res.json({ message: '', redirect: '/adminhome' });
 
 
-                } else if (userData.is_admin === 0 && userData.is_blocked === false) {
+                } else if (userData.is_admin === 0 && userData.is_blocked === false && userData.is_verified == 1) {
                     req.session.user_id = userData._id;
                     res.json({ message: '', redirect: '/userhome' });
 
