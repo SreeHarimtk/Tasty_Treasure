@@ -55,7 +55,7 @@ const loadRegister = async(req,res)=>{
 const userSignup = async(req,res)=>{
     try{
 
-        res.render("userSignup",{message:''})
+        res.render("usersignup",{message:''})
 
     }catch(error){
         console.log(error.message)
