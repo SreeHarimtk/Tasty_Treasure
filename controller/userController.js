@@ -262,6 +262,7 @@ const sendMail = (message,reciever)=>{
             }
           });
 
+
 module.exports = transporter;
 
     } catch (error) {
@@ -358,9 +359,9 @@ const userHome = async (req, res) => {
   function getActiveSubcategories(currentTime) {
     if (currentTime >= 7.00 && currentTime < 23.00) {
       return ['breakfast'];
-    } else if (currentTime >= 12 && currentTime < 17) {
+    } else if (currentTime >= 7.00 && currentTime < 17) {
       return ['lunch'];
-    } else if (currentTime >= 15 && currentTime < 24) {
+    } else if (currentTime >= 7.00 && currentTime < 24) {
       return ['dinner'];
     } else {
       return [];
